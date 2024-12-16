@@ -10,6 +10,7 @@ This repository contains my personal configuration files for various application
 - **[nvim](./nvim/)**: Configuration files for Neovim.
 - **[picom](./picom/)**: Configuration files for the Picom compositor.
 - **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
+- **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
 ## Prerequisites
@@ -35,6 +36,7 @@ stow i3
 stow nvim
 stow picom
 stow polybar
+stow rofi
 stow zsh
 ```
 
