@@ -4,13 +4,13 @@ This repository contains my personal configuration files for various application
 
 ## Directory Structure
 
-- **alacritty**: Configuration files for the Alacritty terminal emulator.
-- **git**: Git configuration files.
-- **i3**: Configuration files for the i3 window manager.
-- **nvim**: Configuration files for Neovim.
-- **picom**: Configuration files for the Picom compositor.
-- **polybar**: Configuration files for the Polybar status bar.
-- **zsh**: Configuration files for the Zsh shell.
+- **[alacritty](./alacritty/)**: Configuration files for the Alacritty terminal emulator.
+- **[git](./git/)**: Git configuration files.
+- **[i3](./i3/)**: Configuration files for the i3 window manager.
+- **[nvim](./nvim/)**: Configuration files for Neovim.
+- **[picom](./picom/)**: Configuration files for the Picom compositor.
+- **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
+- **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
 ## Prerequisites
 
@@ -42,4 +42,4 @@ This will create symbolic links in your home directory pointing to the files in 
 
 ## License
 
-This repository is licensed under the MIT License.
+This repository is licensed under the [MIT License](https://mit-license.org/).
