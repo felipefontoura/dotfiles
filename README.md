@@ -14,7 +14,7 @@ This repository contains my personal configuration files for various application
 
 ## Prerequisites
 
-Make sure you have GNU Stow installed. You can install it using your package manager. For example, on a Debian-based system:
+Make sure you have GNU Stow installed. You can install it using your package manager. For example, on a Arch-based system:
 
 ```sh
 sudo pacman -S stow
