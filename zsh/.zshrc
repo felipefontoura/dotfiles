@@ -94,6 +94,9 @@ alias be="bundle exec"
 # Neovim
 alias nv="nvim"
 
+# Ranger File manager
+alias rg="ranger"
+
 # Shell
 alias ls="exa --icons"
 alias cat="bat"
