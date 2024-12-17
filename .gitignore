@@ -1,4 +1,4 @@
-.lazy-lock.json
+lazy-lock.json
 .env
 .env.*
 !.env.example
