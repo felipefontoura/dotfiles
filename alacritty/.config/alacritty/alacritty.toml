@@ -5,8 +5,12 @@ general.import = [
 [env]
 TERM = "xterm-256color"
 
+[window]
+padding.x = 10
+padding.y = 10
+
 [font]
-size = 8
+size = 9
 builtin_box_drawing = true
 
 [font.bold]
