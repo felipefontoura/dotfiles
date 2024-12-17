@@ -10,6 +10,7 @@ This repository contains my personal configuration files for various application
 - **[nvim](./nvim/)**: Configuration files for Neovim.
 - **[picom](./picom/)**: Configuration files for the Picom compositor.
 - **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
+- **[ranger](./ranger/)**: Configuration files for the Ranger file manager.
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
@@ -26,7 +27,7 @@ sudo pacman -S stow
 To use these dotfiles, clone the repository to your home directory and use Stow to create symbolic links to the appropriate locations. For example:
 
 ```sh
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+git clone https://github.com/felipefontoura/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
 # Stow individual configurations
@@ -36,6 +37,7 @@ stow i3
 stow nvim
 stow picom
 stow polybar
+stow ranger
 stow rofi
 stow zsh
 ```
