@@ -49,9 +49,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Export ENV
-export EDITOR=nvim
-export GTK_THEME=catppuccin-mocha-blue-standard+default:dark
-export ANTHROPIC_API_KEY=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
+source ~/.env
 
 # Aliases
 
