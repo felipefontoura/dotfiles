@@ -1,0 +1,52 @@
+#!/bin/sh
+
+alpha='dd'
+selection='#45475a' # Catppuccin surface1 color
+
+orange='#fab387'  # Catppuccin peach
+red='#f38ba8'     # Catppuccin red
+magenta='#f5c2e7' # Catppuccin pink
+blue='#89b4fa'    # Catppuccin blue
+green='#a6e3a1'   # Catppuccin green
+
+i3lock \
+  --nofork \
+  --insidever-color=$selection$alpha \
+  --insidewrong-color=$selection$alpha \
+  --inside-color=$selection$alpha \
+  --ringver-color=$green$alpha \
+  --ringwrong-color=$red$alpha \
+  --ringver-color=$green$alpha \
+  --ringwrong-color=$red$alpha \
+  --ring-color=$blue$alpha \
+  --line-uses-ring \
+  --keyhl-color=$magenta$alpha \
+  --bshl-color=$orange$alpha \
+  --separator-color=$selection$alpha \
+  --verif-color=$green \
+  --wrong-color=$red \
+  --modif-color=$red \
+  --layout-color=$blue \
+  --date-color=$blue \
+  --time-color=$blue \
+  --screen 1 \
+  --blur 1 \
+  --clock \
+  --indicator \
+  --time-str="%H:%M:%S" \
+  --date-str="%A %e %B %Y" \
+  --verif-text="Checking..." \
+  --wrong-text="Wrong passwd" \
+  --noinput="No Input" \
+  --lock-text="Locking..." \
+  --lockfailed="Lock Failed" \
+  --radius=120 \
+  --ring-width=10 \
+  --pass-media-keys \
+  --pass-screen-keys \
+  --pass-volume-keys \
+  --wrong-font="BlexMono Nerd Font" \
+  --layout-font="BlexMono Nerd Font" \
+  --date-font="BlexMono Nerd Font" \
+  --verif-font="BlexMono Nerd Font" \
+  --time-font="BlexMono Nerd Font"

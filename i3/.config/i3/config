@@ -10,9 +10,9 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 smart_borders on
-smart_gaps on
+# smart_gaps on
 default_border pixel 1
-gaps inner 7
+gaps inner 10
 
 set $mod Mod4
 # set $mod Mod1
@@ -20,10 +20,17 @@ set $mod Mod4
 exec --no-startup-id picom
 exec --no-startup-id feh --bg-scale ~/.config/i3/backgrounds/Waves-Dark-6016x6016.jpg
 exec --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+exec_always --no-startup-id setxkbmap -layout us -variant intl -option ctrl:nocaps
 
 # kill any hanging polybar processes
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# multiple monitors
+exec_always --no-startup-id xrandr --output eDP-1 --auto --primary --right-of HDMI-1-0 --output HDMI-1-0 --auto
+# exec_always --no-startup-id ~/.config/i3/scripts/xrandr
+
+workspace 1 output eDP-1
+workspace 2 output HDMI-1-0
 
 bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
@@ -51,7 +58,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/scripts/lock
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
