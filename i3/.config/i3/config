@@ -9,7 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-for_window [class="^.*"] border pixel 1
+smart_borders on
+smart_gaps on
+default_border pixel 1
+gaps inner 7
 
 set $mod Mod4
 # set $mod Mod1
