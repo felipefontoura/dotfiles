@@ -9,11 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-smart_borders on
-# smart_gaps on
-default_border pixel 1
-gaps inner 10
-
 set $mod Mod4
 # set $mod Mod1
 
@@ -26,11 +21,13 @@ exec_always --no-startup-id setxkbmap -layout us -variant intl -option ctrl:noca
 exec_always --no-startup-id ~/.config/polybar/launch
 
 # multiple monitors
-exec_always --no-startup-id xrandr --output eDP-1 --auto --primary --right-of HDMI-1-0 --output HDMI-1-0 --auto
-# exec_always --no-startup-id ~/.config/i3/scripts/xrandr
+exec_always --no-startup-id ~/.config/i3/scripts/xrandr
 
 workspace 1 output eDP-1
 workspace 2 output HDMI-1-0
+
+# Other apps
+# exec_always --no-startup-id emote
 
 bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
@@ -198,6 +195,19 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Windows and popups
+
+smart_borders on
+smart_gaps on
+default_border pixel 1
+gaps inner 7
+
+popup_during_fullscreen smart
+
+# Floating windows
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="fr.handbrake.ghb"] floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

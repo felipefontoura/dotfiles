@@ -1,0 +1,10 @@
+#!/bin/bash
+
+intern=eDP-1
+extern=HDMI-1-0
+
+if xrandr | grep "$extern disconnected"; then
+  xrandr --output "$intern" --auto --primary
+else
+  xrandr --output "$intern" --auto --primary --right-of "$extern" --output "$extern" --auto
+fi
