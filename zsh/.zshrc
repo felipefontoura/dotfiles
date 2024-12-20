@@ -72,6 +72,10 @@ alias rgmd="bin/rails generate model"
 alias rdmd="bin/rails destroy model"
 alias rgct="bin/rails generate controller"
 alias rdct="bin/rails destroy controller"
+alias rghp="bin/rails generate helper"
+alias rdhp="bin/rails destroy helper"
+alias rgjb="bin/rails generate job"
+alias rdjb="bin/rails destroy job"
 alias rgat="bin/rails generate authentication"
 alias rdat="bin/rails destroy authentication"
 
@@ -79,6 +83,7 @@ alias rc="bin/rails console"
 
 alias rt="bin/rails test"
 
+alias rdbst="bin/rails db:setup"
 alias rdbcr="bin/rails db:create"
 alias rdbmi="bin/rails db:migrate"
 alias rdbrb="bin/rails db:rollback"
