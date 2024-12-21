@@ -15,7 +15,7 @@ set $mod Mod4
 exec --no-startup-id picom
 exec --no-startup-id feh --bg-scale ~/.config/i3/backgrounds/Waves-Dark-6016x6016.jpg
 exec --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id setxkbmap -layout us -variant intl -option ctrl:nocaps
+exec_always --no-startup-id ~/.config/i3/scripts/setxkbmap
 
 # kill any hanging polybar processes
 exec_always --no-startup-id ~/.config/polybar/launch
@@ -121,6 +121,12 @@ bindsym $mod+Shift+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+Ctrl+v split v
 
 # focus the child container
 #bindsym $mod+d focus child

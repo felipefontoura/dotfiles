@@ -1,0 +1,9 @@
+#!/bin/bash
+
+model=$(cat /sys/devices/virtual/dmi/id/product_family)
+
+if [ "$model" == "ThinkPad T490" ]; then
+  setxkbmap -model thinkpad60 -layout br -option ctrl:nocaps
+else
+  setxkbmap -layout us -variant intl -option ctrl:nocaps
+fi
