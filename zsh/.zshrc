@@ -89,8 +89,8 @@ alias rdbmi="bin/rails db:migrate"
 alias rdbrb="bin/rails db:rollback"
 alias rdbsd="bin/rails db:seed"
 
-alias befsd="bundle exec foreman start -f Procfile.dev"
-alias befsp="bundle exec foreman start -f Procfile"
+alias fsd="bundle exec foreman start -f Procfile.dev"
+alias fsp="bundle exec foreman start -f Procfile"
 
 # Bundle
 alias bi="bundle install"
@@ -101,6 +101,12 @@ alias nv="nvim"
 
 # Ranger File manager
 alias rg="ranger"
+
+# Lazygit
+alias lzg="lazygit"
+
+# Lazydocker
+alias lzd="lazydocker"
 
 # Shell
 alias ls="exa --icons"
