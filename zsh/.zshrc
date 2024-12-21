@@ -80,7 +80,7 @@ alias rgat="bin/rails generate authentication"
 alias rdat="bin/rails destroy authentication"
 
 alias rc="bin/rails console"
-
+alias rr="bin/rails routes"
 alias rt="bin/rails test"
 
 alias rdbst="bin/rails db:setup"
