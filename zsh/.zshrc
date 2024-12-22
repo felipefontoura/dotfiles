@@ -51,8 +51,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Export ENV
 [[ ! -f ~/.env ]] || source ~/.env
 
-# Aliases
-
 # Git
 alias g="git"
 alias gst="git status"
@@ -95,6 +93,9 @@ alias fsp="bundle exec foreman start -f Procfile"
 # Bundle
 alias bi="bundle install"
 alias be="bundle exec"
+
+# Kamal
+alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa" -v /var/run/docker.sock:/var/run/docker.sock -e KAMAL_REGISTRY_PASSWORD=$(env | grep "^KAMAL_" | cut -d '=' -f2) ghcr.io/basecamp/kamal:latest'
 
 # Neovim
 alias n="nvim"
