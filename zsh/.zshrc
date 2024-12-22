@@ -119,3 +119,11 @@ alias cat="bat"
 d() {
   cd ~/Development/"$1"
 }
+_d() {
+  local -a dirs
+  dirs=("${(@f)$(ls -d ~/Development/*(/) 2>/dev/null)}")
+  dirs=("${dirs[@]##*/}")  # Extract only the folder names
+  compadd "$@" -- $dirs
+}
+compdef _d d
+
