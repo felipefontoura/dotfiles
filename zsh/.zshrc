@@ -97,7 +97,7 @@ alias bi="bundle install"
 alias be="bundle exec"
 
 # Neovim
-alias nv="nvim"
+alias n="nvim"
 
 # Ranger File manager
 alias rg="ranger"
