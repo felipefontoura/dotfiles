@@ -114,3 +114,8 @@ alias cat="bat"
 #alias find='fd'
 #alias grep='rg'
 #alias ps='procs'
+
+# Dev folder alias
+d() {
+  cd ~/Development/"$1"
+}
