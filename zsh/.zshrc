@@ -85,6 +85,7 @@ alias rtm="bin/rails test:models"
 alias rtc="bin/rails test:controllers"
 alias rth="bin/rails test:helpers"
 alias rts="bin/rails test:system"
+alias rta="bin/rails test:all"
 
 alias rdbst="bin/rails db:setup"
 alias rdbcr="bin/rails db:create"
