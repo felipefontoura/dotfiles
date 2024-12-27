@@ -59,6 +59,7 @@ alias gcm="git commit"
 alias gps="git push"
 alias gpl="git pull"
 alias grb="git rebase"
+alias gck="git ck"
 
 # Rails
 alias rce="bin/rails credentials:edit"
