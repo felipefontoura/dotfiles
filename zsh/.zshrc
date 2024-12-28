@@ -53,13 +53,14 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # Git
 alias g="git"
+alias gcl="git clone"
 alias gst="git status"
 alias gad="git add"
 alias gcm="git commit"
 alias gps="git push"
 alias gpl="git pull"
 alias grb="git rebase"
-alias gck="git ck"
+alias gck="git checkout"
 
 # Rails
 alias rce="bin/rails credentials:edit"
