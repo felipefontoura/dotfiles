@@ -108,8 +108,9 @@ alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "${HOME}/.ssh/id_rsa:/r
 # Neovim
 alias n="nvim"
 
-# Ranger File manager
+# File manager
 alias rg="ranger"
+alias th="thunar"
 
 # Lazygit
 alias lzg="lazygit"
