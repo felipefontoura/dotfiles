@@ -214,7 +214,7 @@ popup_during_fullscreen smart
 # Floating windows
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="fr.handbrake.ghb"] floating enable
-for_window [class="vlc"] floating enable
+for_window [class="vlc"] floating enable, resize set 800 600
 for_window [class="nm-connection-editor"] floating enable
 for_window [class="Emote"] floating enable
 for_window [class="KeePassXC"] floating enable, resize set 800 600
