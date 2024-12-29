@@ -124,7 +124,9 @@ alias cat="bat"
 #alias grep='rg'
 #alias ps='procs'
 
-# Dev folder alias
+# Others
+alias o="xdg-open"
+
 d() {
   cd ~/Development/"$1"
 }
