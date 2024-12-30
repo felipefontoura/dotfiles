@@ -28,6 +28,7 @@ workspace 2 output HDMI-1-0
 
 # Other apps
 # exec_always --no-startup-id emote
+exec_always --no-startup-id keepassxc
 
 bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
