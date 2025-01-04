@@ -54,13 +54,14 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Git
 alias g="git"
 alias gcl="git clone"
+alias gck="git checkout"
 alias gst="git status"
+alias gdf="git diff"
 alias gad="git add"
 alias gcm="git commit"
-alias gps="git push"
 alias gpl="git pull"
+alias gps="git push"
 alias grb="git rebase"
-alias gck="git checkout"
 
 # Rails
 alias rce="bin/rails credentials:edit"
@@ -107,6 +108,7 @@ alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "${HOME}/.ssh/id_rsa:/r
 
 # Neovim
 alias n="nvim"
+alias n.="nvim ."
 
 # File manager
 alias rg="ranger"
