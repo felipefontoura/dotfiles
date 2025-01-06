@@ -1,5 +1,5 @@
 configuration{
-    modi: "drun,window,combi,calc";
+    modi: "run,window,combi,calc";
     icon-theme: "Papirus-Dark";
     show-icons: true;
     terminal: "alacritty";
