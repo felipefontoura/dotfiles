@@ -10,7 +10,7 @@ padding.x = 10
 padding.y = 10
 
 [font]
-size = 8 
+size = 10 
 builtin_box_drawing = true
 
 [font.bold]
