@@ -1,9 +1,10 @@
 #!/bin/bash
 
 model=$(cat /sys/devices/virtual/dmi/id/product_family)
+options="-option ctrl:nocaps -option keypad:pointerkeys"
 
 if [ "$model" == "ThinkPad T490" ]; then
-  setxkbmap -model thinkpad60 -layout br -option ctrl:nocaps
+  setxkbmap -model thinkpad60 -layout br $options
 else
-  setxkbmap -layout us -variant intl -option ctrl:nocaps
+  setxkbmap -layout us -variant intl $options
 fi
