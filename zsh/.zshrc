@@ -126,6 +126,7 @@ alias lzd="lazydocker"
 # Shell
 alias ls="exa --icons"
 alias cat="bat"
+alias htop="btop"
 #alias find='fd'
 #alias grep='rg'
 #alias ps='procs'
