@@ -1,5 +1,5 @@
 configuration{
-    modi: "run,window,combi";
+    modi: "drun,window,combi,calc";
     icon-theme: "Papirus-Dark";
     show-icons: true;
     terminal: "alacritty";
@@ -7,9 +7,10 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-combi: "all";
-    display-run: "run";
-    display-window: "win";
+    display-drun: " 󰞷 ";
+    display-window: " 󰹟 ";
+    display-combi: "  ";
+    display-calc: "  ";
     sidebar-mode: true;
 }
 
