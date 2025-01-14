@@ -5,6 +5,7 @@ This repository contains my personal configuration files for various application
 ## Directory Structure
 
 - **[alacritty](./alacritty/)**: Configuration files for the Alacritty terminal emulator.
+- **[cava](./cava/)**: Configuration files for the cross-platform Audio Visualizer
 - **[git](./git/)**: Git configuration files.
 - **[i3](./i3/)**: Configuration files for the i3 window manager.
 - **[nvim](./nvim/)**: Configuration files for Neovim.
@@ -33,6 +34,7 @@ cd ~/.dotfiles
 
 # Stow individual configurations
 stow alacritty
+stow cava
 stow git
 stow i3
 stow nvim
