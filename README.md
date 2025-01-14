@@ -5,6 +5,7 @@ This repository contains my personal configuration files for various application
 ## Directory Structure
 
 - **[alacritty](./alacritty/)**: Configuration files for the Alacritty terminal emulator.
+- **[btop](./btop/)**: Configuration files for the Btop monitor resources.
 - **[cava](./cava/)**: Configuration files for the cross-platform Audio Visualizer
 - **[fastfetch](./fastfetch/)**: Configuration files for system information tool.
 - **[git](./git/)**: Git configuration files.
@@ -35,6 +36,7 @@ cd ~/.dotfiles
 
 # Stow individual configurations
 stow alacritty
+stow btop
 stow cava
 stow fastfetch
 stow git
