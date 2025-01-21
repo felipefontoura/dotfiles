@@ -115,7 +115,7 @@ alias n.="nvim ."
 
 # File manager
 alias rg="ranger"
-alias th="thunar"
+alias sf="spf"
 
 # Lazygit
 alias lzg="lazygit"
