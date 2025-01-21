@@ -15,6 +15,7 @@ This repository contains my personal configuration files for various application
 - **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
 - **[ranger](./ranger/)**: Configuration files for the Ranger file manager.
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
+- **[superfile](./superfile/)**: Configuration files for terminal file manager.
 - **[X](./x/)**: Configuration files for X.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
@@ -46,6 +47,7 @@ stow picom
 stow polybar
 stow ranger
 stow rofi
+stow superfile
 stow x
 stow zsh
 ```
