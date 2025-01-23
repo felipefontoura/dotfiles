@@ -103,6 +103,7 @@ alias fsd="bundle exec foreman start -f Procfile.dev"
 alias fsp="bundle exec foreman start -f Procfile"
 
 # Bundle
+alias ba="bundle add"
 alias bi="bundle install"
 alias be="bundle exec"
 
