@@ -6,19 +6,6 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "claude",
-      auto_suggestions_provider = "claude",
-      behaviour = {
-        auto_suggestions = true,
-        auto_set_highlight_group = true,
-        auto_set_keymaps = true,
-        auto_apply_diff_after_generation = false,
-        support_paste_from_clipboard = true,
-        minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-      },
-      hints = { enabled = true },
-      windows = {
-        width = 30,
-      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
