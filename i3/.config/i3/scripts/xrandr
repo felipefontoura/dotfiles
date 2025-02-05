@@ -1,7 +1,18 @@
 #!/bin/bash
 
-intern=eDP-1
-extern=HDMI-1-0
+model=$(cat /sys/devices/virtual/dmi/id/product_family)
+
+if [ "$model" == "ThinkPad T490" ]; then
+  intern=eDP-1
+  extern=HDMI-1-0
+elif [ "$model" == "Nitro 5" ]; then
+  intern=eDP-1-1
+  extern=HDMI-0
+else
+  # Default fallback
+  intern=eDP-1
+  extern=HDMI-1
+fi
 
 if xrandr | grep "$extern disconnected"; then
   xrandr --output "$intern" --auto --primary

@@ -5,6 +5,9 @@ options="-option ctrl:nocaps -option keypad:pointerkeys"
 
 if [ "$model" == "ThinkPad T490" ]; then
   setxkbmap -model thinkpad60 -layout br $options
+elif [ "$model" == "Nitro 5" ]; then
+  setxkbmap -layout us -variant intl $options
 else
+  # Default fallback
   setxkbmap -layout us -variant intl $options
 fi
