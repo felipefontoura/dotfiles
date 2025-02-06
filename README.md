@@ -17,6 +17,7 @@ This repository contains my personal configuration files for various application
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
 - **[superfile](./superfile/)**: Configuration files for terminal file manager.
 - **[X](./x/)**: Configuration files for X.
+- **[Zellij](./zellij/)**: Configuration files for Zellij terminal workspace.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
 ## Prerequisites
@@ -49,6 +50,7 @@ stow ranger
 stow rofi
 stow superfile
 stow x
+stow zellij
 stow zsh
 ```
 
