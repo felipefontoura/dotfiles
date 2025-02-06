@@ -132,6 +132,9 @@ alias htop="btop"
 #alias grep='rg'
 #alias ps='procs'
 
+# Zellij
+alias z="zellij"
+
 # Others
 alias o="xdg-open"
 
