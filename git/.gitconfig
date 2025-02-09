@@ -1,0 +1,5 @@
+[user]
+	email = ffontouras@gmail.com
+	name = Felipe Fontoura
+[pull]
+	rebase = true
