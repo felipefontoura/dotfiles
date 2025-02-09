@@ -15,6 +15,7 @@ This repository contains my personal configuration files for various application
 - **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
 - **[ranger](./ranger/)**: Configuration files for the Ranger file manager.
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
+- **[ruby](./ruby/)**: Configuration files for ruby gems.
 - **[superfile](./superfile/)**: Configuration files for terminal file manager.
 - **[tmux](./tmux/)**: Configuration files for terminal multiplex.
 - **[X](./x/)**: Configuration files for X.
@@ -48,6 +49,7 @@ stow picom
 stow polybar
 stow ranger
 stow rofi
+stow ruby
 stow superfile
 stow tmux
 stow x
