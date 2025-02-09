@@ -132,8 +132,10 @@ alias htop="btop"
 #alias grep='rg'
 #alias ps='procs'
 
-# Zellij
-alias z="zellij"
+# tmux
+alias t="tmux"
+alias ta="tmux attach"
+alias tn="tmux new"
 
 # Others
 alias o="xdg-open"

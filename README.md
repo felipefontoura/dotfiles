@@ -16,8 +16,8 @@ This repository contains my personal configuration files for various application
 - **[ranger](./ranger/)**: Configuration files for the Ranger file manager.
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
 - **[superfile](./superfile/)**: Configuration files for terminal file manager.
+- **[tmux](./tmux/)**: Configuration files for terminal multiplex.
 - **[X](./x/)**: Configuration files for X.
-- **[Zellij](./zellij/)**: Configuration files for Zellij terminal workspace.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
 ## Prerequisites
@@ -49,8 +49,8 @@ stow polybar
 stow ranger
 stow rofi
 stow superfile
+stow tmux
 stow x
-stow zellij
 stow zsh
 ```
 
