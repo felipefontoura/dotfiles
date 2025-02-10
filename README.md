@@ -5,6 +5,7 @@ This repository contains my personal configuration files for various application
 ## Directory Structure
 
 - **[alacritty](./alacritty/)**: Configuration files for the Alacritty terminal emulator.
+- **[asdf](./asdf/)**: Configuration files for ASDF version manager.
 - **[btop](./btop/)**: Configuration files for the Btop monitor resources.
 - **[cava](./cava/)**: Configuration files for the cross-platform Audio Visualizer
 - **[fastfetch](./fastfetch/)**: Configuration files for system information tool.
@@ -13,6 +14,7 @@ This repository contains my personal configuration files for various application
 - **[nvim](./nvim/)**: Configuration files for Neovim.
 - **[picom](./picom/)**: Configuration files for the Picom compositor.
 - **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
+- **[powerlevel 10k](./p10k/)**: Configuration files for powerlevel 10k.
 - **[ranger](./ranger/)**: Configuration files for the Ranger file manager.
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
 - **[ruby](./ruby/)**: Configuration files for ruby gems.
@@ -39,12 +41,14 @@ cd ~/.dotfiles
 
 # Stow individual configurations
 stow alacritty
+stow asdf
 stow btop
 stow cava
 stow fastfetch
 stow git
 stow i3
 stow nvim
+stow p10k
 stow picom
 stow polybar
 stow ranger
