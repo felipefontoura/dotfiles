@@ -1,5 +1,9 @@
-# Exec fastfetch
-fastfetch
+# Exec fastfetch on terminal
+if [ "$(ps -o comm= -p $PPID)" = "alacritty" ]; then
+    fastfetch
+fi
+
+echo
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -136,8 +140,8 @@ alias htop="btop"
 
 # tmux
 alias t="tmux"
-alias ta="tmux attach"
-alias tn="tmux new"
+alias td='tmux source-file ~/.tmux/dev-layout.tmux'
+alias tdr='tmux source-file ~/.tmux/dev-layout-rails.tmux'
 
 # Others
 alias o="xdg-open"
