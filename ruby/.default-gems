@@ -4,3 +4,9 @@ pry
 gem-ctags
 neovim
 environment
+
+ruby-lsp
+rubocop
+nokogiri
+language_server-protocol
+ffi
