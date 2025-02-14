@@ -1,5 +1,6 @@
 # Start a new session named 'dev'
 new-session -s dev -n editor
+send-keys 'nvim .' Enter
 
 # Split the first window vertically, with 30% on the right
 split-window -h -p 30
