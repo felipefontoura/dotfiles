@@ -140,8 +140,8 @@ alias htop="btop"
 
 # tmux
 alias t="tmux"
-alias td='tmux source-file ~/.tmux/dev-layout.tmux'
-alias tdr='tmux source-file ~/.tmux/dev-layout-rails.tmux'
+alias td="tmux source-file ~/.tmux/dev-layout.tmux"
+alias tdr="tmux source-file ~/.tmux/dev-layout-rails.tmux"
 
 # Others
 alias o="xdg-open"
