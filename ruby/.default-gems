@@ -10,3 +10,4 @@ rubocop
 nokogiri
 language_server-protocol
 ffi
+erb_lint
