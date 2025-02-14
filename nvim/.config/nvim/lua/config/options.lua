@@ -53,6 +53,7 @@ opt.splitright = true -- Put new windows right of current
 -- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
+opt.textwidth = 80 -- 80 columns
 opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
 opt.undofile = true
 opt.undolevels = 10000
@@ -60,7 +61,7 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
-opt.wrap = false -- Disable line wrap
+opt.wrap = true -- Enable line wrap
 
 -- if vim.fn.has("nvim-0.10") == 1 then
 --  opt.smoothscroll = true
