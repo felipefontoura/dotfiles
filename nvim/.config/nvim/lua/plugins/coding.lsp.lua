@@ -69,8 +69,8 @@ return {
       lspconfig.harper_ls.setup({
         capabilities = capabilities,
         filetypes = {
-          "html",
-          "markdown",
+          -- "html",
+          -- "markdown",
           "text",
         },
       })
