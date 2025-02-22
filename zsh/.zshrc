@@ -99,6 +99,90 @@ alias rth="bin/rails test:helpers"
 alias rts="bin/rails test:system"
 alias rta="bin/rails test:all"
 
+alias rl="bin/rubocop"
+alias rlf="bin/rubocop -a"
+alias rla="bin/rubocop -A"
+
+alias rbk="bin/brakeman --no-pager"
+
+alias bia="bin/importmap audit"
+
+# Full test suite with status reporting
+function rtf() {
+  # Color definitions
+  local GREEN='\033[0;32m'
+  local RED='\033[0;31m'
+  local YELLOW='\033[0;33m'
+  local BLUE='\033[0;34m'
+  local MAGENTA='\033[0;35m'
+  local CYAN='\033[0;36m'
+  local ORANGE='\033[38;5;208m'
+  local PURPLE='\033[38;5;141m'
+  local BOLD='\033[1m'
+  local NC='\033[0m' # No Color
+
+  echo "${BLUE}󱓟 Running full test suite...${NC}"
+  
+  echo "${MAGENTA}󱇧 Running Rails tests...${NC}"
+  if ! output=$(bin/rails test:all 2>&1); then
+    echo "$output"
+  fi
+  local tests_status=$?
+
+  echo "${PURPLE}󰍉 Running RuboCop...${NC}"
+  if ! output=$(bin/rubocop 2>&1); then
+    echo "$output"
+  fi
+  local rubocop_status=$?
+
+  echo "${ORANGE}󰌾 Running Brakeman security checks...${NC}"
+  if ! output=$(bin/brakeman --no-pager -q 2>&1); then
+    echo "$output"
+  fi
+  local brakeman_status=$?
+
+  echo "${CYAN}󰏗 Auditing JavaScript dependencies...${NC}"
+  if ! output=$(bin/importmap audit 2>&1); then
+    echo "$output"
+  fi
+  local audit_status=$?
+
+  echo "${YELLOW}${BOLD}󰄨 Test Suite Results:${NC}"
+  echo "${YELLOW}------------------------${NC}"
+  if [ $tests_status -eq 0 ]; then
+    echo "${GREEN}󰄬 Rails tests: Passed${NC}"
+  else
+    echo "${RED} Rails tests: Failed${NC}"
+  fi
+  
+  if [ $rubocop_status -eq 0 ]; then
+    echo "${GREEN}󰄬 RuboCop: Passed${NC}"
+  else
+    echo "${RED} RuboCop: Failed${NC}"
+  fi
+
+  if [ $brakeman_status -eq 0 ]; then
+    echo "${GREEN}󰄬 Brakeman: Passed${NC}"
+  else
+    echo "${RED} Brakeman: Failed${NC}"
+  fi
+
+  if [ $audit_status -eq 0 ]; then
+    echo "${GREEN}󰄬 JS Audit: Passed${NC}"
+  else
+    echo "${RED} JS Audit: Failed${NC}"
+  fi
+  echo "${YELLOW}------------------------${NC}"
+
+  if [ $tests_status -eq 0 ] && [ $rubocop_status -eq 0 ] && [ $brakeman_status -eq 0 ] && [ $audit_status -eq 0 ]; then
+    echo "${GREEN}${BOLD}󱕦 All checks passed successfully! 󱕦${NC}\n"
+    return 0
+  else
+    echo "${RED}${BOLD} Some checks failed. Please review the output above. ${NC}\n"
+    return 1
+  fi
+}
+
 alias rdbst="bin/rails db:setup"
 alias rdbcr="bin/rails db:create"
 alias rdbmi="bin/rails db:migrate"
@@ -146,10 +230,10 @@ alias tdr="tmux source-file ~/.tmux/dev-layout-rails.tmux"
 # Others
 alias o="xdg-open"
 
-d() {
+function d() {
   cd ~/Development/"$1"
 }
-_d() {
+function _d() {
   local -a dirs
   dirs=("${(@f)$(ls -d ~/Development/*(/) 2>/dev/null)}")
   dirs=("${dirs[@]##*/}")  # Extract only the folder names
