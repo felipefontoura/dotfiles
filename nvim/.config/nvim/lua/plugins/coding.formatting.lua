@@ -28,6 +28,19 @@ return {
 				eruby = { "erb_format" },
 			},
 
+			-- Configure formatters
+			formatters = {
+				prettier = {
+					options = {
+						-- Configure prettier to not wrap markdown files
+						["markdown"] = {
+							prose_wrap = "never",
+							print_width = 120,
+						},
+					},
+				},
+			},
+
 			-- Set up format-on-save
 			format_on_save = {
 				timeout_ms = 500,
