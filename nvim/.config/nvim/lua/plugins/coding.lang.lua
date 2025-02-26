@@ -18,6 +18,11 @@ return {
 			dash = {
 				width = 10,
 			},
+			html = {
+				comment = {
+					conceal = false, -- Disable comments hiding
+				},
+			},
 		},
 	},
 }
