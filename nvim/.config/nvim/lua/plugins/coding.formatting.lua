@@ -1,48 +1,38 @@
 return {
-  {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = {
+			formatters_by_ft = {
+				-- JavaScript/TypeScript/WEB
+				javascript = { "prettier", "eslint_d" },
+				typescript = { "prettier", "eslint_d" },
+				javascriptreact = { "prettier", "eslint_d" },
+				typescriptreact = { "prettier", "eslint_d" },
+				html = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				json = { "prettier" },
+				markdown = { "prettier" },
+				yaml = { "prettier" },
 
-      null_ls.setup({
-        sources = {
-          -- JavaScript
-          -- null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.formatting.prettier,
+				-- Lua
+				lua = { "stylua" },
 
-          -- Lua
-          null_ls.builtins.formatting.stylua,
+				-- Python
+				python = { "black", "isort" },
 
-          -- Python
-          null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.isort,
+				-- Ruby
+				ruby = { "rubocop" },
+				eruby = { "erb_format" },
+			},
 
-          -- Ruby and RoR
-          null_ls.builtins.diagnostics.rubocop,
-          null_ls.builtins.formatting.rubocop,
-          null_ls.builtins.formatting.erb_lint,
-        },
-
-        -- Format on save
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format({
-                  bufnr = bufnr,
-                  filter = function(c)
-                    return c.name == "null-ls"
-                  end
-                })
-              end,
-            })
-          end
-        end,
-      })
-    end,
-  },
+			-- Set up format-on-save
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+		},
+	},
 }

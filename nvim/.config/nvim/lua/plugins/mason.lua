@@ -26,7 +26,6 @@ return {
 					"isort",
 					"json-lsp",
 					"lua-language-server",
-					"markdownlint-cli2",
 					"prettier",
 					"python-lsp-server",
 					"rubocop",
@@ -35,7 +34,6 @@ return {
 					"stylua",
 					"tailwindcss-language-server",
 					"typescript-language-server",
-					"yamlfmt",
 					"yaml-language-server",
 				},
 			})

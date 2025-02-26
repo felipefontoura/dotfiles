@@ -134,7 +134,9 @@ map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- Formatting
-map({ "n", "v" }, "<leader>cf", vim.lsp.buf.format, { desc = "Format" })
+map({ "n", "v" }, "<leader>cf", function()
+	require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format" })
 
 -- LSP
 map("n", "K", vim.lsp.buf.hover, {})
