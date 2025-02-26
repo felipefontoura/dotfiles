@@ -12,12 +12,11 @@ return {
 		opts = {
 			filesystem = {
 				filtered_items = {
-					visible = false,
+					visible = true,
 					hide_dotfiles = true,
 					hide_gitignored = true,
-					hide_hidden = true,
 					never_show = {
-            "node_modules",
+						"node_modules",
 						".DS_Store",
 					},
 				},
