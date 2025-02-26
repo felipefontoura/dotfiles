@@ -10,4 +10,5 @@ rubocop
 nokogiri
 language_server-protocol
 ffi
+erb-formatter
 erb_lint
