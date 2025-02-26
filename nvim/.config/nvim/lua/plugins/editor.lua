@@ -6,7 +6,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
-			-- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
 		},
 		lazy = false,
 		opts = {
@@ -17,6 +16,11 @@ return {
 					hide_gitignored = true,
 					never_show = {
 						"node_modules",
+						".git",
+						".github",
+						".kamal",
+						".ruby-lsp",
+						".venv",
 						".DS_Store",
 					},
 				},
