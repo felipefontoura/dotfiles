@@ -142,5 +142,5 @@ sudo systemctl enable ufw.service
 # Cleanup
 #
 rm -rf ~/go
-pacman -Qdtq | sudo pacman -Rns -
+pacman -Qdtq | sudo pacman -Rns --noconfirm -
 yay -Scc --noconfirm
