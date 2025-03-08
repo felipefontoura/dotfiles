@@ -15,7 +15,6 @@ This repository contains my personal configuration files for various application
 - **[picom](./picom/)**: Configuration files for the Picom compositor.
 - **[polybar](./polybar/)**: Configuration files for the Polybar status bar.
 - **[powerlevel 10k](./p10k/)**: Configuration files for powerlevel 10k.
-- **[ranger](./ranger/)**: Configuration files for the Ranger file manager.
 - **[rofi](./rofi/)**: Configuration files for the application launcher and dmenu replacement.
 - **[ruby](./ruby/)**: Configuration files for ruby gems.
 - **[superfile](./superfile/)**: Configuration files for terminal file manager.
@@ -51,7 +50,6 @@ stow nvim
 stow p10k
 stow picom
 stow polybar
-stow ranger
 stow rofi
 stow ruby
 stow superfile
