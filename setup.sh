@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # Exit on error
 set -e
@@ -242,7 +242,7 @@ install_group "i3 Window Manager" polybar picom rofi maim i3lock-color brightnes
 install_group "Themes and Icons" papirus-icon-theme
 
 # Utility Applications
-install_group "Utility Applications" logseq-desktop-bin anki-bin rnote xournalpp keepassxc transmission-gtk localsend-bin
+install_group "Utility Applications" logseq-desktop-bin anki-bin rnote xournalpp texlive-latexextra keepassxc transmission-gtk localsend-bin
 
 # Keyboard
 install_group "Keyboard" kbd-br-thinkpad
