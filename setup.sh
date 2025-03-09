@@ -183,7 +183,7 @@ asdf install python $PYTHON_VERSION
 
 # Ruby on Rails dependencies
 echo "Installing Ruby on Rails dependencies..."
-yay -Sy --needed --noconfirm libvips
+yay -Sy --needed --noconfirm libvips postgresql-libs
 
 # Nodejs global packages
 echo "Installing global NPM packages..."
