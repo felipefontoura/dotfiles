@@ -10,6 +10,7 @@ This repository contains my personal configuration files for various application
 - **[cava](./cava/)**: Configuration files for the cross-platform Audio Visualizer
 - **[fastfetch](./fastfetch/)**: Configuration files for system information tool.
 - **[git](./git/)**: Git configuration files.
+- **[GTK](./gtk/)**: GTK theme settings files.
 - **[i3](./i3/)**: Configuration files for the i3 window manager.
 - **[nvim](./nvim/)**: Configuration files for Neovim.
 - **[picom](./picom/)**: Configuration files for the Picom compositor.
@@ -45,6 +46,7 @@ stow btop
 stow cava
 stow fastfetch
 stow git
+stow gtk
 stow i3
 stow nvim
 stow p10k
