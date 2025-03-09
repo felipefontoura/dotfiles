@@ -3,6 +3,11 @@
 # Exit on error
 set -e
 
+# Language versions
+NODEJS_VERSION="22.13.1"
+RUBY_VERSION="3.4.1"
+PYTHON_VERSION="3.13.2"
+
 # Function to print section headers
 print_header() {
   echo -e "\n\033[1;34m## $1\033[0m"
@@ -166,9 +171,9 @@ done
 
 # Install language versions
 echo "Installing language versions with ASDF..."
-asdf install nodejs 22.13.1
-asdf install ruby 3.4.1
-asdf install python 3.13.2
+asdf install nodejs $NODEJS_VERSION
+asdf install ruby $RUBY_VERSION
+asdf install python $PYTHON_VERSION
 
 # Ruby on Rails dependencies
 echo "Installing Ruby on Rails dependencies..."
