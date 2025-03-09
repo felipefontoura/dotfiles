@@ -1,0 +1,5 @@
+PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+EDITOR=nvim
+
+ANTHROPIC_API_KEY=sk-xxx
+TAVILY_API_KEY=tvly-xxx
