@@ -80,6 +80,12 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
   chsh -s /usr/bin/zsh
 fi
 
+# TMUX plugins
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  echo "Installing TMUX plugin manager..."
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+
 ##
 # Dotfiles
 #
