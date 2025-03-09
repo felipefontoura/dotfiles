@@ -2,3 +2,6 @@ lazy-lock.json
 .env
 .env.*
 !.env.example
+.zshenv
+.zshenv.*
+!.zshenv.example

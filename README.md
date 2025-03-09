@@ -10,6 +10,7 @@ This repository contains my personal configuration files for various application
 - **[cava](./cava/)**: Configuration files for the cross-platform Audio Visualizer
 - **[fastfetch](./fastfetch/)**: Configuration files for system information tool.
 - **[git](./git/)**: Git configuration files.
+- **[GTK](./gtk/)**: GTK theme settings files.
 - **[i3](./i3/)**: Configuration files for the i3 window manager.
 - **[nvim](./nvim/)**: Configuration files for Neovim.
 - **[picom](./picom/)**: Configuration files for the Picom compositor.
@@ -19,7 +20,6 @@ This repository contains my personal configuration files for various application
 - **[ruby](./ruby/)**: Configuration files for ruby gems.
 - **[superfile](./superfile/)**: Configuration files for terminal file manager.
 - **[tmux](./tmux/)**: Configuration files for terminal multiplex.
-- **[X](./x/)**: Configuration files for X.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
 ## Prerequisites
@@ -45,6 +45,7 @@ stow btop
 stow cava
 stow fastfetch
 stow git
+stow gtk
 stow i3
 stow nvim
 stow p10k
@@ -54,7 +55,6 @@ stow rofi
 stow ruby
 stow superfile
 stow tmux
-stow x
 stow zsh
 ```
 
