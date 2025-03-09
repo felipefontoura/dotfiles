@@ -1,5 +1,5 @@
-PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-EDITOR=nvim
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export EDITOR=nvim
 
-ANTHROPIC_API_KEY=sk-xxx
-TAVILY_API_KEY=tvly-xxx
+export ANTHROPIC_API_KEY=sk-xxx
+export TAVILY_API_KEY=tvly-xxx
