@@ -32,6 +32,8 @@ sudo pacman -S stow
 
 ## Usage
 
+### Option 1: Manual Installation
+
 To use these dotfiles, clone the repository to your home directory and use Stow to create symbolic links to the appropriate locations. For example:
 
 ```sh
@@ -59,6 +61,27 @@ stow zsh
 ```
 
 This will create symbolic links in your home directory pointing to the files in the `.dotfiles` repository.
+
+### Option 2: Automated Setup Script
+
+For a complete system setup including dotfiles installation, you can use the included setup script:
+
+```sh
+git clone https://github.com/felipefontoura/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+bash setup.sh
+```
+
+The setup script will:
+
+- Install YAY (AUR helper)
+- Set up ZSH with plugins
+- Install and configure dotfiles using Stow
+- Install development tools (ASDF, Node.js, Ruby, Python)
+- Install desktop applications and utilities
+- Configure system services
+
+You can review the script before running it to customize it to your needs.
 
 ## License
 
