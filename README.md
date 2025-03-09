@@ -20,7 +20,6 @@ This repository contains my personal configuration files for various application
 - **[ruby](./ruby/)**: Configuration files for ruby gems.
 - **[superfile](./superfile/)**: Configuration files for terminal file manager.
 - **[tmux](./tmux/)**: Configuration files for terminal multiplex.
-- **[X](./x/)**: Configuration files for X.
 - **[zsh](./zsh/)**: Configuration files for the Zsh shell.
 
 ## Prerequisites
@@ -56,7 +55,6 @@ stow rofi
 stow ruby
 stow superfile
 stow tmux
-stow x
 stow zsh
 ```
 
