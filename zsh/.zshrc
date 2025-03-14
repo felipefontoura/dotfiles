@@ -60,13 +60,40 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 alias g="git"
 alias gcl="git clone"
 alias gck="git checkout"
+alias gcb="git checkout -b"  # Create and checkout a new branch
 alias gst="git status"
 alias gdf="git diff"
+alias gdfs="git diff --staged"  # Show diff of staged changes
 alias gad="git add"
+alias gada="git add --all"  # Add all changes
 alias gcm="git commit"
+alias gcmm="git commit -m"  # Commit with message
+alias gcma="git commit --amend"  # Amend previous commit
+alias gcman="git commit --amend --no-edit"  # Amend without changing message
 alias gpl="git pull"
+alias gplr="git pull --rebase"  # Pull with rebase
 alias gps="git push"
+alias gpsf="git push --force-with-lease"  # Safer force push
 alias grb="git rebase"
+alias grbi="git rebase -i"  # Interactive rebase
+alias grbm="git rebase origin/main"  # Rebase on main
+alias grs="git reset"  # Reset
+alias grsh="git reset --hard"  # Hard reset
+alias gsh="git stash"  # Stash changes
+alias gshl="git stash list"  # List stashes
+alias gshp="git stash pop"  # Pop stash
+alias gsha="git stash apply"  # Apply stash
+alias gshd="git stash drop"  # Drop stash
+alias gbl="git branch -l"  # List branches
+alias gbd="git branch -d"  # Delete branch
+alias gbD="git branch -D"  # Force delete branch
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"  # Pretty log
+alias gm="git merge"  # Merge
+alias gcp="git cherry-pick"  # Cherry-pick
+alias gft="git fetch"  # Fetch
+alias gfta="git fetch --all"  # Fetch all remotes
+alias grmt="git remote -v"  # Show remotes
+alias gcf="git config --list"  # List config
 
 # Rails
 alias rce="bin/rails credentials:edit"
@@ -237,3 +264,5 @@ function _d() {
 }
 compdef _d d
 
+
+. "$HOME/.local/bin/env"
