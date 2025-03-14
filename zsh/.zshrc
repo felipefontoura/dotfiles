@@ -263,6 +263,3 @@ function _d() {
   compadd "$@" -- $dirs
 }
 compdef _d d
-
-
-. "$HOME/.local/bin/env"
