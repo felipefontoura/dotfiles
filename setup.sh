@@ -220,7 +220,7 @@ yay -Sy --needed --noconfirm libvips postgresql-libs
 
 # Nodejs global packages
 echo "Installing global NPM packages..."
-npm install -g yarn neovim
+$HOME/.asdf/shims/npm install -g yarn neovim
 
 # Neovim and development tools
 echo "Installing Neovim and development tools..."
