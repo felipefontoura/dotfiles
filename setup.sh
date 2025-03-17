@@ -266,8 +266,9 @@ uninstall_group() {
 
 # Browsers
 echo "Setting up browsers..."
-gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
-install_group "Browsers" brave-bin firefox tor-browser-bin chromium
+#gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
+#install_group "Browsers" brave-bin firefox tor-browser-bin chromium
+install_group "Browsers" brave-bin firefox chromium
 
 # Communication
 install_group "Communication Tools" thunderbird thunderbird-i18n-pt-br hunspell-en_us hunspell-pt-br zoom
