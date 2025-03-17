@@ -133,7 +133,6 @@ fi
 
 # Array of configs to stow
 configs=(
-  "alacritty"
   "asdf"
   "btop"
   "fastfetch"
@@ -149,6 +148,7 @@ configs=(
 # Add desktop environment specific configs
 if [[ "$DESKTOP_ENV" == "i3" ]]; then
   configs+=(
+    "alacritty"
     "cava"
     "i3"
     "picom"
@@ -192,7 +192,7 @@ echo "Setting up ASDF plugins..."
 asdf_plugins=(
   "nodejs:https://github.com/asdf-vm/asdf-nodejs.git"
   "ruby:https://github.com/asdf-vm/asdf-ruby.git"
-  "python:https://github.com/asdf-vm/asdf-python.git"
+  "python:https://github.com/asdf-community/asdf-python"
 )
 
 for plugin_entry in "${asdf_plugins[@]}"; do
