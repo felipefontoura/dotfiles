@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # Exit on error
 set -e
@@ -7,6 +7,33 @@ set -e
 NODEJS_VERSION="22.13.1"
 RUBY_VERSION="3.4.1"
 PYTHON_VERSION="3.13.2"
+
+# Default desktop environment
+DESKTOP_ENV="gnome"
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  --desktop=*)
+    DESKTOP_ENV="${1#*=}"
+    shift
+    ;;
+  *)
+    echo "Unknown option: $1"
+    echo "Usage: $0 [--desktop=gnome|i3]"
+    exit 1
+    ;;
+  esac
+done
+
+# Validate desktop environment choice
+if [[ "$DESKTOP_ENV" != "gnome" && "$DESKTOP_ENV" != "i3" ]]; then
+  echo "Invalid desktop environment: $DESKTOP_ENV"
+  echo "Supported options: gnome, i3"
+  exit 1
+fi
+
+echo "Selected desktop environment: $DESKTOP_ENV"
 
 # Function to print section headers
 print_header() {
@@ -34,10 +61,10 @@ if command_exists yay; then
 else
   echo "Installing YAY..."
   sudo pacman -S --needed --noconfirm git base-devel
-  
+
   # Clean up any previous failed attempts
   rm -rf ~/yay-bin
-  
+
   git clone https://aur.archlinux.org/yay-bin.git ~/yay-bin
   cd ~/yay-bin
   makepkg -si --noconfirm
@@ -109,21 +136,27 @@ configs=(
   "alacritty"
   "asdf"
   "btop"
-  "cava"
   "fastfetch"
   "git"
   "gtk"
-  "i3"
   "nvim"
   "p10k"
-  "picom"
-  "polybar"
-  "rofi"
   "ruby"
-  "superfile"
   "tmux"
   "zsh"
 )
+
+# Add desktop environment specific configs
+if [[ "$DESKTOP_ENV" == "i3" ]]; then
+  configs+=(
+    "cava"
+    "i3"
+    "picom"
+    "polybar"
+    "rofi"
+    "superfile"
+  )
+fi
 
 echo "Stowing configuration files..."
 for config in "${configs[@]}"; do
@@ -143,7 +176,7 @@ echo "Installing Development and Utils..."
 if ! command_exists asdf; then
   echo "Installing ASDF version manager..."
   yay -Sy --needed --noconfirm asdf-vm
-  
+
   # Source ASDF to make it available in this script
   source /opt/asdf-vm/asdf.sh
 else
@@ -152,7 +185,7 @@ fi
 
 # Setup ASDF completions
 mkdir -p "$HOME/.asdf/completions"
-asdf completion zsh > "$HOME/.asdf/completions/_asdf"
+asdf completion zsh >"$HOME/.asdf/completions/_asdf"
 
 # Install ASDF plugins
 echo "Setting up ASDF plugins..."
@@ -165,7 +198,7 @@ asdf_plugins=(
 for plugin_entry in "${asdf_plugins[@]}"; do
   plugin_name="${plugin_entry%%:*}"
   plugin_url="${plugin_entry#*:}"
-  
+
   if ! asdf plugin list | grep -q "$plugin_name"; then
     echo "Adding ASDF plugin: $plugin_name"
     asdf plugin add "$plugin_name" "$plugin_url"
@@ -197,7 +230,7 @@ yay -Sy --needed --noconfirm docker docker-buildx lazydocker-bin lazygit neovim 
 if package_installed docker; then
   echo "Enabling Docker service..."
   sudo systemctl enable --now docker.service
-  
+
   # Add current user to docker group if not already
   if ! groups | grep -q docker; then
     sudo usermod -aG docker "$USER"
@@ -216,7 +249,7 @@ install_group() {
   local group_name="$1"
   shift
   local packages=("$@")
-  
+
   echo "Installing $group_name..."
   yay -Sy --needed --noconfirm "${packages[@]}"
 }
@@ -235,8 +268,12 @@ install_group "Fonts" ttf-opensans ttf-ubuntu-font-family ttf-bitstream-vera ttf
 # Games
 install_group "Games" minecraft-launcher
 
-# i3 Window Manager and related tools
-install_group "i3 Window Manager" polybar picom rofi maim i3lock-color brightnessctl cava rofi-calc
+# Desktop Environment
+if [[ "$DESKTOP_ENV" == "i3" ]]; then
+  install_group "i3 Window Manager" i3-gaps polybar picom rofi maim i3lock-color brightnessctl cava rofi-calc
+elif [[ "$DESKTOP_ENV" == "gnome" ]]; then
+  install_group "GNOME Desktop" gnome gnome-tweaks gnome-shell-extensions
+fi
 
 # Theme and Icons
 install_group "Themes and Icons" papirus-icon-theme
@@ -333,5 +370,18 @@ echo "Cleaning package cache..."
 yay -Scc --noconfirm
 
 print_header "Setup Complete!"
-echo "Your system has been configured successfully."
+echo "Your system has been configured successfully with $DESKTOP_ENV desktop environment."
 echo "Please log out and log back in for all changes to take effect."
+
+# Display additional instructions based on desktop environment
+if [[ "$DESKTOP_ENV" == "gnome" ]]; then
+  echo "GNOME tips:"
+  echo "- Use gnome-tweaks to customize your desktop"
+  echo "- Install GNOME extensions from extensions.gnome.org"
+elif [[ "$DESKTOP_ENV" == "i3" ]]; then
+  echo "i3 tips:"
+  echo "- Default mod key is Super (Windows key)"
+  echo "- Use mod+Enter to open terminal"
+  echo "- Use mod+d to open application launcher"
+  echo "- See ~/.config/i3/config for more keybindings"
+fi
