@@ -178,7 +178,7 @@ if ! command_exists asdf; then
   yay -Sy --needed --noconfirm asdf-vm
 
   # Source ASDF to make it available in this script
-  source /opt/asdf-vm/asdf.sh
+  source "$HOME/.zshrc"
 else
   echo "ASDF already installed, skipping..."
 fi
@@ -254,6 +254,16 @@ install_group() {
   yay -Sy --needed --noconfirm "${packages[@]}"
 }
 
+# Function to uninstall a group of packages
+uninstall_group() {
+  local group_name="$1"
+  shift
+  local packages=("$@")
+
+  echo "Removing $group_name..."
+  sudo pacman -Rs --noconfirm "${packages[@]}" 2>/dev/null || true
+}
+
 # Browsers
 echo "Setting up browsers..."
 gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
@@ -272,7 +282,8 @@ install_group "Games" minecraft-launcher
 if [[ "$DESKTOP_ENV" == "i3" ]]; then
   install_group "i3 Window Manager" i3-gaps polybar picom rofi maim i3lock-color brightnessctl cava rofi-calc
 elif [[ "$DESKTOP_ENV" == "gnome" ]]; then
-  install_group "GNOME Desktop" gnome gnome-tweaks gnome-shell-extensions
+  install_group "GNOME Desktop" gnome-boxes
+  uninstall_group "Unwanted GNOME Applications" totem gnome-music gnome-weather gnome-maps gnome-tour gnome-software gnome-contacts snapshot gnome-clocks yelp epiphany gnome-calendar gnome-logs gnome-user-docs
 fi
 
 # Theme and Icons
