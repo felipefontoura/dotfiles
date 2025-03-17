@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository contains my personal configuration files for various applications and tools, managed using [GNU Stow](https://www.gnu.org/software/stow/).
+This repository contains my personal configuration files for various applications and tools.
 
 ## Directory Structure
 
@@ -62,14 +62,26 @@ stow zsh
 
 This will create symbolic links in your home directory pointing to the files in the `.dotfiles` repository.
 
-### Option 2: Automated Setup Script
-
 For a complete system setup including dotfiles installation, you can use the included setup script:
 
 ```sh
 git clone https://github.com/felipefontoura/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+bash setup.sh [--desktop=gnome|i3]
+```
+
+The setup script accepts the following parameters:
+
+- `--desktop=gnome|i3`: Choose between GNOME or i3 desktop environment (default: gnome)
+
+Examples:
+
+```sh
+# Install with GNOME desktop (default)
 bash setup.sh
+
+# Install with i3 window manager
+bash setup.sh --desktop=i3
 ```
 
 The setup script will:
@@ -78,10 +90,8 @@ The setup script will:
 - Set up ZSH with plugins
 - Install and configure dotfiles using Stow
 - Install development tools (ASDF, Node.js, Ruby, Python)
-- Install desktop applications and utilities
+- Install desktop applications and utilities (GNOME or i3 based on your selection)
 - Configure system services
-
-You can review the script before running it to customize it to your needs.
 
 ## License
 
