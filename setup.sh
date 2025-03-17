@@ -308,6 +308,44 @@ fc-cache -f
 
 print_header "System Configuration"
 
+# NVIDIA GPU Configuration
+echo "Checking for NVIDIA GPU..."
+if lspci | grep -i nvidia &>/dev/null; then
+  echo "NVIDIA GPU detected, configuring as primary GPU..."
+
+  # Create directory if it doesn't exist
+  sudo mkdir -p /etc/X11/xorg.conf.d
+
+  # Create NVIDIA configuration file
+  sudo bash -c 'cat > /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf << EOF
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection
+EOF'
+
+  echo "NVIDIA GPU configured as primary GPU."
+
+  # Install NVIDIA drivers if not already installed
+  if ! package_installed nvidia; then
+    echo "Installing NVIDIA drivers..."
+    yay -Sy --needed --noconfirm nvidia nvidia-utils nvidia-settings
+  fi
+else
+  echo "No NVIDIA GPU detected, skipping configuration."
+fi
+
 # Function to enable and start a service
 setup_service() {
   local service_name="$1"
