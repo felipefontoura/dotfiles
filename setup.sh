@@ -1326,3 +1326,48 @@ show_completion_message() {
   # Log completion
   log "Setup completed successfully with $DESKTOP_ENV desktop environment"
 }
+
+#######################################
+# MAIN EXECUTION
+#######################################
+
+main() {
+  # Parse command line arguments
+  parse_arguments "$@"
+
+  # Display script header
+  print_header "Arch Linux Post-Installation Setup"
+  print_info "Starting setup with desktop environment: $DESKTOP_ENV"
+
+  # Setup pacman and AUR helper
+  setup_package_manager
+
+  # Setup shell environment
+  setup_shell
+
+  # Setup dotfiles
+  setup_dotfiles
+
+  # Setup development environment
+  setup_development
+
+  # Setup desktop applications
+  setup_desktop_applications
+
+  # Setup system configuration
+  setup_system
+
+  # Setup desktop environment specific customizations
+  if [[ "$DESKTOP_ENV" == "gnome" ]]; then
+    setup_gnome_customization
+  fi
+
+  # Final cleanup
+  cleanup_system
+
+  # Show completion message
+  show_completion_message
+}
+
+# Execute main function with all script arguments
+main "$@"
