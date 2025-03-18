@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Reference: omakub.org
+
 # Exit on error, undefined variables, and propagate pipe errors
 set -euo pipefail
 
@@ -1101,7 +1103,7 @@ setup_gnome_behavior() {
 
   # Calendar settings
   gsettings set org.gnome.desktop.calendar show-weekdate true
-  gsettings set org.gnome.desktop.calendar show-weekday true
+  gsettings set org.gnome.desktop.calendar clock-show-weekday true
   gsettings set org.gnome.desktop.calendar clock-format '24h'
 
   # Battery percentage
