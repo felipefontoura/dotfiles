@@ -1252,14 +1252,11 @@ show_completion_message() {
   echo "- Ruby: $RUBY_VERSION"
   echo "- Python: $PYTHON_VERSION"
 
-  # Display desktop environment specific tips
-  if [[ "$DESKTOP_ENV" == "gnome" ]]; then
-    echo -e "\n\033[1;33mGNOME Tips:\033[0m"
-    echo "- Use Super+1-6 to switch workspaces"
-    echo "- Extensions have been configured automatically"
-    echo "- Yaru Magenta theme has been applied"
-
-  fi
+  # Display GNOME tips
+  echo -e "\n\033[1;33mGNOME Tips:\033[0m"
+  echo "- Use Super+1-6 to switch workspaces"
+  echo "- Extensions have been configured automatically"
+  echo "- Yaru Magenta theme has been applied"
 
   echo -e "\n\033[1;36mEnjoy your newly configured system!\033[0m"
 
@@ -1277,7 +1274,7 @@ main() {
 
   # Display script header
   print_header "Arch Linux Post-Installation Setup"
-  print_info "Starting setup with desktop environment: $DESKTOP_ENV"
+  print_info "Starting GNOME setup"
 
   # Setup pacman and AUR helper
   setup_package_manager
