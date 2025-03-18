@@ -1101,8 +1101,6 @@ setup_gnome_behavior() {
 
   # Calendar settings
   gsettings set org.gnome.desktop.calendar show-weekdate true
-  gsettings set org.gnome.desktop.calendar clock-show-weekday true
-  gsettings set org.gnome.desktop.calendar clock-format '24h'
 
   # Battery percentage
   gsettings set org.gnome.desktop.interface show-battery-percentage true
