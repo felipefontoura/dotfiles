@@ -7,25 +7,22 @@ set -euo pipefail
 # CONFIGURATION
 #######################################
 
-# Default configuration
-CONFIG=(
-  # Language versions
-  NODEJS_VERSION="22.13.1"
-  RUBY_VERSION="3.4.1"
-  PYTHON_VERSION="3.13.2"
+# Language versions
+NODEJS_VERSION="22.13.1"
+RUBY_VERSION="3.4.1"
+PYTHON_VERSION="3.13.2"
 
-  # Default desktop environment
-  DESKTOP_ENV="gnome"
+# Default desktop environment
+DESKTOP_ENV="gnome"
 
-  # Default printer IP
-  PRINTER_IP="192.168.15.84"
+# Default printer IP
+PRINTER_IP="192.168.15.84"
 
-  # Enable firewall by default
-  ENABLE_FIREWALL=false
+# Enable firewall by default
+ENABLE_FIREWALL=false
 
-  # Development directory
-  DEV_DIR="$HOME/Development"
-)
+# Development directory
+DEV_DIR="$HOME/Development"
 
 #######################################
 # INITIALIZATION
