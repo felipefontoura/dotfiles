@@ -673,8 +673,6 @@ setup_gnome_environment() {
   local gnome_themes=(
     yaru-gtk-theme
     yaru-gnome-shell-theme
-    yaru-icon-theme
-    yaru-session
   )
   install_group "GNOME Themes" "${gnome_themes[@]}"
 }
