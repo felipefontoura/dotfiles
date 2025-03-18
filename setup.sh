@@ -12,9 +12,6 @@ NODEJS_VERSION="22.13.1"
 RUBY_VERSION="3.4.1"
 PYTHON_VERSION="3.13.2"
 
-# Default desktop environment
-DESKTOP_ENV="gnome"
-
 # Default printer IP
 PRINTER_IP="192.168.15.84"
 
@@ -37,10 +34,7 @@ fi
 parse_arguments() {
   while [[ $# -gt 0 ]]; do
     case $1 in
-    --desktop=*)
-      DESKTOP_ENV="${1#*=}"
-      shift
-      ;;
+
     --printer=*)
       PRINTER_IP="${1#*=}"
       shift
@@ -61,14 +55,6 @@ parse_arguments() {
     esac
   done
 
-  # Validate desktop environment choice
-  if [[ "$DESKTOP_ENV" != "gnome" && "$DESKTOP_ENV" != "i3" ]]; then
-    echo "Invalid desktop environment: $DESKTOP_ENV"
-    echo "Supported options: gnome, i3"
-    exit 1
-  fi
-
-  echo "Selected desktop environment: $DESKTOP_ENV"
 }
 
 show_help() {
@@ -76,13 +62,13 @@ show_help() {
 Usage: $0 [OPTIONS]
 
 Options:
-  --desktop=ENV       Set desktop environment (gnome or i3)
+
   --printer=IP        Set printer IP address
   --firewall          Enable firewall with default deny policy
   --help              Show this help message
 
 Example:
-  $0 --desktop=i3 --printer=192.168.1.100 --firewall
+  $0 --printer=192.168.1.100 --firewall
 EOF
 }
 
@@ -346,26 +332,9 @@ setup_dotfiles() {
     "p10k"
     "ruby"
     "tmux"
+    "ulauncher"
     "zsh"
   )
-
-  # Add desktop environment specific configs
-  if [[ "$DESKTOP_ENV" == "i3" ]]; then
-    configs+=(
-      "cava"
-      "i3"
-      "picom"
-      "polybar"
-      "rofi"
-      "superfile"
-    )
-  fi
-
-  if [[ "$DESKTOP_ENV" == "gnome" ]]; then
-    configs+=(
-      "ulauncher"
-    )
-  fi
 
   print_info "Stowing configuration files..."
   cd "$DOTFILES_DIR" || return 1
@@ -668,26 +637,7 @@ setup_games() {
 }
 
 setup_desktop_environment() {
-  if [[ "$DESKTOP_ENV" == "i3" ]]; then
-    setup_i3_environment
-  elif [[ "$DESKTOP_ENV" == "gnome" ]]; then
-    setup_gnome_environment
-  fi
-}
-
-setup_i3_environment() {
-  local i3_packages=(
-    i3-gaps
-    polybar
-    picom
-    rofi
-    maim
-    i3lock-color
-    brightnessctl
-    cava
-    rofi-calc
-  )
-  install_group "i3 Window Manager" "${i3_packages[@]}"
+  setup_gnome_environment
 }
 
 setup_gnome_environment() {
@@ -969,21 +919,19 @@ EOF'
 #######################################
 
 setup_gnome_customization() {
-  if [[ "$DESKTOP_ENV" == "gnome" ]]; then
-    print_header "GNOME Customization"
+  print_header "GNOME Customization"
 
-    # Install and configure extensions
-    setup_gnome_extensions
+  # Install and configure extensions
+  setup_gnome_extensions
 
-    # Configure GNOME appearance
-    setup_gnome_appearance
+  # Configure GNOME appearance
+  setup_gnome_appearance
 
-    # Configure GNOME behavior
-    setup_gnome_behavior
+  # Configure GNOME behavior
+  setup_gnome_behavior
 
-    # Configure GNOME keybindings
-    setup_gnome_keybindings
-  fi
+  # Configure GNOME keybindings
+  setup_gnome_keybindings
 }
 
 setup_gnome_extensions() {
@@ -1294,12 +1242,12 @@ cleanup_cache() {
 
 show_completion_message() {
   print_header "Setup Complete!"
-  echo "Your system has been configured successfully with $DESKTOP_ENV desktop environment."
+  echo "Your system has been configured successfully with GNOME desktop environment."
   echo "Please log out and log back in for all changes to take effect."
 
   # Display additional information
   echo -e "\n\033[1;32mSummary:\033[0m"
-  echo "- Desktop Environment: $DESKTOP_ENV"
+  echo "- Desktop Environment: GNOME"
   echo "- Node.js: $NODEJS_VERSION"
   echo "- Ruby: $RUBY_VERSION"
   echo "- Python: $PYTHON_VERSION"
@@ -1310,18 +1258,13 @@ show_completion_message() {
     echo "- Use Super+1-6 to switch workspaces"
     echo "- Extensions have been configured automatically"
     echo "- Yaru Magenta theme has been applied"
-  elif [[ "$DESKTOP_ENV" == "i3" ]]; then
-    echo -e "\n\033[1;33mi3 Tips:\033[0m"
-    echo "- Default mod key is Super (Windows key)"
-    echo "- Use mod+Enter to open terminal"
-    echo "- Use mod+d to open application launcher"
-    echo "- See ~/.config/i3/config for more keybindings"
+
   fi
 
   echo -e "\n\033[1;36mEnjoy your newly configured system!\033[0m"
 
   # Log completion
-  log "Setup completed successfully with $DESKTOP_ENV desktop environment"
+  log "Setup completed successfully with GNOME desktop environment"
 }
 
 #######################################
@@ -1354,10 +1297,8 @@ main() {
   # Setup system configuration
   setup_system
 
-  # Setup desktop environment specific customizations
-  if [[ "$DESKTOP_ENV" == "gnome" ]]; then
-    setup_gnome_customization
-  fi
+  # Setup GNOME customizations
+  setup_gnome_customization
 
   # Final cleanup
   cleanup_system
