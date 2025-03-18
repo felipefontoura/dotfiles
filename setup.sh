@@ -479,7 +479,7 @@ install_asdf_version() {
   local version="$2"
   print_info "Installing $lang $version..."
   asdf install "$lang" "$version" && {
-    asdf global "$lang" "$version" && {
+    asdf set "$lang" "$version" --default && {
       print_success "$lang $version installed and set as global"
       log "$lang $version installed and set as global"
     } || {
