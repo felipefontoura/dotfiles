@@ -9,3 +9,14 @@
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	l = log
+	pl = pull
+	ps = push
+	ft = fetch
+	d = diff
+	a = add
