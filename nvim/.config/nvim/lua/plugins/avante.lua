@@ -2,9 +2,10 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    version = false,
     opts = {
-      provider = "claude",
+      -- provider = "claude",
+      provider = "copilot",
     },
     build = "make",
     dependencies = {
@@ -12,6 +13,9 @@ return {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
