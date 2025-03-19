@@ -1087,7 +1087,7 @@ setup_gnome_appearance() {
   }
 
   # Set monospace font
-  gsettings set org.gnome.desktop.interface monospace-font-name 'BlexMono Nerd Font Medium 12'
+  gsettings set org.gnome.desktop.interface monospace-font-name 'BlexMono Nerd Font Medium 11'
 
   print_success "GNOME appearance configured"
   log "GNOME appearance configured"
