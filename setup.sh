@@ -454,7 +454,7 @@ setup_languages() {
 
   # Ruby on Rails dependencies
   print_info "Installing Ruby on Rails dependencies..."
-  yay -Sy --needed --noconfirm libvips imagemagick graphicsmagick postgresql-libs libpqxx pgcli sqlite3 && {
+  yay -Sy --needed --noconfirm libvips imagemagick graphicsmagick graphviz postgresql-libs libpqxx pgcli sqlite3 && {
     print_success "Ruby on Rails dependencies installed"
     log "Ruby on Rails dependencies installed"
   }
