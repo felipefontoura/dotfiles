@@ -940,6 +940,9 @@ setup_gnome_customization() {
 setup_gnome_extensions() {
   print_info "Setting up GNOME extensions..."
 
+  # Wait for user input to continue
+  read -r -p "To install Gnome extensions, you need to accept some confirmations. Are you ready?"
+
   # Install GNOME extensions CLI
   install_group "Extensions" gnome-extensions-cli
 
