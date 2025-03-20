@@ -334,6 +334,7 @@ setup_dotfiles() {
     "p10k"
     "ruby"
     "tmux"
+    "typora"
     "ulauncher"
     "zsh"
   )
