@@ -1097,12 +1097,12 @@ setup_gnome_appearance() {
   gsettings set org.gnome.desktop.interface monospace-font-name 'BlexMono Nerd Font Medium 11'
 
   # Set background
-  gsettings set org.gnome.desktop.background color-shading-type='solid'
-  gsettings set org.gnome.desktop.background picture-options='zoom'
-  gsettings set org.gnome.desktop.background picture-uri='file:///usr/share/backgrounds/gnome/amber-l.jxl'
-  gsettings set org.gnome.desktop.background picture-uri-dark='file:///usr/share/backgrounds/gnome/amber-d.jxl'
-  gsettings set org.gnome.desktop.background primary-color='#ff7800'
-  gsettings set org.gnome.desktop.background secondary-color='#000000'
+  # gsettings set org.gnome.desktop.background color-shading-type='solid'
+  # gsettings set org.gnome.desktop.background picture-options='zoom'
+  # gsettings set org.gnome.desktop.background picture-uri='file:///usr/share/backgrounds/gnome/amber-l.jxl'
+  # gsettings set org.gnome.desktop.background picture-uri-dark='file:///usr/share/backgrounds/gnome/amber-d.jxl'
+  # gsettings set org.gnome.desktop.background primary-color='#ff7800'
+  # gsettings set org.gnome.desktop.background secondary-color='#000000'
 
   print_success "GNOME appearance configured"
   log "GNOME appearance configured"
@@ -1191,6 +1191,8 @@ setup_gnome_keybindings() {
 
 setup_gnome_autostart() {
   print_info "Configuring GNOME autostart applications..."
+
+  mkdir -p "$HOME/.config/autostart"
 
   # Create Ulauncher application definition
   bash -c "cat > \"$HOME/.config/autostart/ulauncher.desktop\" << EOF
