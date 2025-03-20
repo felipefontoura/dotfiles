@@ -1,0 +1,4 @@
+*/**/*
+!settings.json
+!shortcuts.json
+!extensions.json
