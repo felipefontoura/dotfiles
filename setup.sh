@@ -1026,7 +1026,7 @@ configure_gnome_extensions() {
   gsettings set org.gnome.shell.extensions.tactile col-3 0
   gsettings set org.gnome.shell.extensions.tactile row-0 1
   gsettings set org.gnome.shell.extensions.tactile row-1 1
-  gsettings set org.gnome.shell.extensions.tactile gap-size 32
+  gsettings set org.gnome.shell.extensions.tactile gap-size 7
 
   # Configure Just Perfection
   print_info "Configuring Just Perfection extension..."
