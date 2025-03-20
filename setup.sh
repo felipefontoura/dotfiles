@@ -639,15 +639,10 @@ setup_games() {
 }
 
 setup_desktop_environment() {
-  setup_gnome_environment
-}
-
-setup_gnome_environment() {
   local gnome_packages=(
     gnome-boxes
     sushi
     ulauncher
-    flameshot
   )
   install_group "GNOME Desktop" "${gnome_packages[@]}"
 
@@ -698,6 +693,7 @@ setup_utility_applications() {
     keepassxc
     transmission-gtk
     localsend-bin
+    typora
   )
   install_group "Utility Applications" "${utility_apps[@]}"
 }
@@ -935,6 +931,9 @@ setup_gnome_customization() {
 
   # Configure autostart applications
   setup_gnome_autostart
+
+  # Organize applications
+  setup_gnome_organize_applications
 }
 
 setup_gnome_extensions() {
@@ -1096,6 +1095,14 @@ setup_gnome_appearance() {
   # Set monospace font
   gsettings set org.gnome.desktop.interface monospace-font-name 'BlexMono Nerd Font Medium 11'
 
+  # Set background
+  gsettings set org.gnome.desktop.background color-shading-type='solid'
+  gsettings set org.gnome.desktop.background picture-options='zoom'
+  gsettings set org.gnome.desktop.background picture-uri='file:///usr/share/backgrounds/gnome/amber-l.jxl'
+  gsettings set org.gnome.desktop.background picture-uri-dark='file:///usr/share/backgrounds/gnome/amber-d.jxl'
+  gsettings set org.gnome.desktop.background primary-color='#ff7800'
+  gsettings set org.gnome.desktop.background secondary-color='#000000'
+
   print_success "GNOME appearance configured"
   log "GNOME appearance configured"
 }
@@ -1111,6 +1118,11 @@ setup_gnome_behavior() {
 
   # Battery percentage
   gsettings set org.gnome.desktop.interface show-battery-percentage true
+
+  # Input source
+  gsettings set org.gnome.desktop.input-sources mru-sources "[('xkb', 'us')]"
+  gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+alt-intl'), ('xkb', 'br')]"
+  gsettings set org.gnome.desktop.input-sources xkb-options "['terminate:ctrl_alt_bksp']"
 
   print_success "GNOME behavior configured"
   log "GNOME behavior configured"
@@ -1158,22 +1170,17 @@ setup_gnome_keybindings() {
   gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
 
   # Ulauncher
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'ulauncher-toggle'
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Ulauncher'
   gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'ulauncher-toggle'
   gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>space'
 
-  # Flameshot
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name 'Flameshot'
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command 'sh -c -- "flameshot gui"'
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding '<Control>Print'
-
-  # New Alacritty window
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'alacritty'
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'alacritty'
+  # New console window
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'Console'
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'kgx --tab'
   gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding '<Shift><Alt>2'
 
   # New Brave window
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name 'new brave'
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name 'Brave'
   gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command 'brave'
   gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding '<Shift><Alt>1'
 
@@ -1222,6 +1229,108 @@ EOF"
 
   print_success "GNOME autostart configured"
   log "GNOME autostart configured"
+}
+
+# Organize desktop applications
+setup_gnome_organize_applications() {
+  print_header "Organizing GNOME applications..."
+
+  # Create local applications directory if it doesn't exist
+  mkdir -p ~/.local/share/applications
+
+  # Function to hide an application from the menu
+  hide_application() {
+    local app_id="$1"
+    local app_path="/usr/share/applications/$app_id"
+    local local_path="$HOME/.local/share/applications/$app_id"
+
+    if [ -f "$app_path" ]; then
+      print_info "Hiding $app_id from application menu..."
+      # Copy the original .desktop file
+      cp "$app_path" "$local_path"
+      # Add NoDisplay=true to hide it
+      echo "NoDisplay=true" >>"$local_path"
+      print_success "Hidden: $app_id"
+      log "Hidden application: $app_id"
+    else
+      print_warning "$app_id not found, skipping"
+      log "Application not found: $app_id"
+    fi
+  }
+
+  # System utilities that should not appear in the app grid
+  print_info "Hiding unnecessary application entries..."
+
+  HIDE_APPS=(
+    # System monitoring tools (replaced by btop in terminal)
+    "btop.desktop"
+    "htop.desktop"
+    "org.gnome.SystemMonitor.desktop"
+
+    # Vim/Neovim (terminal apps)
+    "nvim.desktop"
+    "vim.desktop"
+
+    # Java related
+    "java-java-openjdk.desktop"
+    "jconsole-java-openjdk.desktop"
+    "jshell-java-openjdk.desktop"
+
+    # Network tools
+    "nm-connection-editor.desktop"
+
+    # System utilities
+    "avahi-discover.desktop"
+    "bssh.desktop"
+    "bvnc.desktop"
+    "lstopo.desktop"
+    "qv4l2.desktop"
+    "qvidcap.desktop"
+    "uxterm.desktop"
+    "xterm.desktop"
+    "xdvi.desktop"
+  )
+
+  # Hide each application
+  for app in "${HIDE_APPS[@]}"; do
+    hide_application "$app"
+  done
+
+  # Set up application folders
+  print_info "Setting up application folders..."
+
+  # Reset folder configuration
+  gsettings reset org.gnome.desktop.app-folders folder-children
+
+  # Define folders with Notes folder (using UUID as in your dconf dump)
+  gsettings set org.gnome.desktop.app-folders folder-children "['Utilities', 'Graphics', 'System', 'Games', 'Notes']"
+
+  # Notes folder
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Notes/ name 'Notes'
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Notes/ apps "['anki.desktop', 'com.github.flxzt.rnote.desktop', 'com.github.xournalpp.xournalpp.desktop', 'logseq-desktop.desktop', 'typora.desktop']"
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Notes/ translate false
+
+  # Games folder
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ name 'Games'
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ apps "['minecraft-launcher.desktop']"
+
+  # Graphics folder
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Graphics/ name 'Graphics & Media'
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Graphics/ apps "['audacity.desktop', 'blender.desktop', 'gimp.desktop', 'fr.handbrake.ghb.desktop', 'org.gnome.Loupe.desktop', 'org.inkscape.Inkscape.desktop', 'fr.romainvigier.MetadataCleaner.desktop', 'com.obsproject.Studio.desktop', 'vlc.desktop']"
+
+  # System folder
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/System/ name 'System'
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/System/ apps "['Alacritty.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Connections.desktop', 'org.gnome.Console.desktop', 'org.gnome.Extensions.desktop', 'org.gnome.Settings.desktop', 'ulauncher.desktop', 'org.gnome.SystemMonitor.desktop', 'cups.desktop']"
+
+  # Utilities folder
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ name 'Utilities'
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ apps "['org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'simple-scan.desktop', 'org.gnome.font-viewer.desktop', 'org.keepassxc.KeePassXC.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.tweaks.desktop', 'btop-terminal.desktop', 'nvim-terminal.desktop', 'org.gnome.Zenity.desktop', 'org.gnome.Evince.desktop', 'org.freedesktop.MalcontentControl.desktop', 'transmission-gtk.desktop']"
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ categories "['X-GNOME-Utilities']"
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ excluded-apps "['org.gnome.Console.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop']"
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ translate true
+
+  print_success "GNOME organization complete!"
+  log "GNOME organization complete"
 }
 
 #######################################
