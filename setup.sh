@@ -1099,14 +1099,6 @@ setup_gnome_appearance() {
   # Set monospace font
   gsettings set org.gnome.desktop.interface monospace-font-name 'BlexMono Nerd Font Medium 11'
 
-  # Set background
-  # gsettings set org.gnome.desktop.background color-shading-type='solid'
-  # gsettings set org.gnome.desktop.background picture-options='zoom'
-  # gsettings set org.gnome.desktop.background picture-uri='file:///usr/share/backgrounds/gnome/amber-l.jxl'
-  # gsettings set org.gnome.desktop.background picture-uri-dark='file:///usr/share/backgrounds/gnome/amber-d.jxl'
-  # gsettings set org.gnome.desktop.background primary-color='#ff7800'
-  # gsettings set org.gnome.desktop.background secondary-color='#000000'
-
   print_success "GNOME appearance configured"
   log "GNOME appearance configured"
 }
@@ -1295,12 +1287,37 @@ setup_gnome_organize_applications() {
     "uxterm.desktop"
     "xterm.desktop"
     "xdvi.desktop"
+
+    # Multimedia
+    "blackmagicraw-player.desktop"
+    "blackmagicraw-speedtest.desktop"
+    "DaVinciControlPanelsSetup.desktop"
+    "DaVinciResolveCaptureLogs.desktop"
+    "DaVinciResolveInstaller.desktop"
   )
 
   # Hide each application
   for app in "${HIDE_APPS[@]}"; do
     hide_application "$app"
   done
+
+  # Replace menu Davinci Resolve with ENV
+  bash -c "cat > \"$HOME/.local/share/applications/DaVinciResolve.desktop\" << EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DaVinci Resolve
+GenericName=DaVinci Resolve
+Comment=Revolutionary new tools for editing, visual effects, color correction and professional audio post production, all in a single application!
+Path=/opt/resolve/
+Exec=env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only /opt/resolve/bin/resolve %u
+Terminal=false
+MimeType=application/x-resolveproj;
+Icon=/opt/resolve/graphics/DV_Resolve.png
+StartupNotify=true
+Name[en_US]=DaVinci Resolve
+StartupWMClass=resolve
+EOF"
 
   # Set up application folders
   print_info "Setting up application folders..."
@@ -1322,7 +1339,7 @@ setup_gnome_organize_applications() {
 
   # Graphics folder
   gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Graphics/ name 'Graphics & Media'
-  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Graphics/ apps "['audacity.desktop', 'blender.desktop', 'gimp.desktop', 'fr.handbrake.ghb.desktop', 'org.gnome.Loupe.desktop', 'org.inkscape.Inkscape.desktop', 'fr.romainvigier.MetadataCleaner.desktop', 'com.obsproject.Studio.desktop', 'vlc.desktop']"
+  gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Graphics/ apps "['audacity.desktop', 'blender.desktop', 'DaVinciResolve.desktop', 'gimp.desktop', 'fr.handbrake.ghb.desktop', 'org.gnome.Loupe.desktop', 'org.inkscape.Inkscape.desktop', 'fr.romainvigier.MetadataCleaner.desktop', 'com.obsproject.Studio.desktop', 'vlc.desktop']"
 
   # System folder
   gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/System/ name 'System'
