@@ -932,6 +932,9 @@ setup_gnome_customization() {
 
   # Configure GNOME keybindings
   setup_gnome_keybindings
+
+  # Configure autostart applications
+  setup_gnome_autostart
 }
 
 setup_gnome_extensions() {
@@ -1003,6 +1006,10 @@ setup_gnome_extensions() {
     print_error "Failed to compile gsettings schemas"
     log "Failed to compile gsettings schemas"
   }
+
+  # Enable system extensions
+  gext enable user-theme@gnome-shell-extensions.gcampax.github.com
+  gext enable status-icons@gnome-shell-extensions.gcampax.github.com
 
   # Configure extensions
   configure_gnome_extensions
@@ -1172,7 +1179,49 @@ setup_gnome_keybindings() {
 
   print_success "GNOME keybindings configured"
   log "GNOME keybindings configured"
+}
 
+setup_gnome_autostart() {
+  print_info "Configuring GNOME autostart applications..."
+
+  # Create Ulauncher application definition
+  bash -c "cat > \"$HOME/.config/autostart/ulauncher.desktop\" << EOF
+[Desktop Entry]
+Name=Ulauncher
+Comment=Application launcher for Linux
+GenericName=Launcher
+Categories=GNOME;GTK;Utility;
+TryExec=/usr/bin/ulauncher
+Exec=env GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window
+Icon=ulauncher
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
+EOF"
+
+  # Create keepassxc autostart
+  bash -c "cat > \"$HOME/.config/autostart/org.keepassxc.KeePassXC.desktop\" << EOF
+[Desktop Entry]
+Name=KeePassXC
+GenericName=Password Manager
+Exec=keepassxc
+TryExec=keepassxc
+Icon=keepassxc
+StartupWMClass=keepassxc
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=2
+X-KDE-autostart-after=panel
+X-LXQt-Need-Tray=true
+EOF"
+
+  print_success "GNOME autostart configured"
+  log "GNOME autostart configured"
 }
 
 #######################################
