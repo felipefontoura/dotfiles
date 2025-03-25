@@ -691,6 +691,8 @@ setup_utility_applications() {
     texlive-latex
     texlive-latexrecommended
     texlive-latexextra
+    bitwarden-bin
+    bitwarden-cli
     keepassxc
     transmission-gtk
     localsend-bin
