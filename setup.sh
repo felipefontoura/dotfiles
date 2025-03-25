@@ -716,6 +716,7 @@ setup_media_applications() {
     v4l2loopback-dkms
     obs-source-clone
     obs-move-transition
+    obs-advanced-masks
     handbrake
     vlc
     yt-dlp
