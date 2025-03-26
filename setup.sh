@@ -463,7 +463,7 @@ setup_languages() {
   # Nodejs global packages
   print_info "Installing global NPM packages..."
   if [[ -f "$HOME/.asdf/shims/npm" ]]; then
-    "$HOME/.asdf/shims/npm" install -g yarn neovim && {
+    "$HOME/.asdf/shims/npm" install -g yarn pnpm neovim && {
       print_success "Global NPM packages installed"
       log "Global NPM packages installed"
     } || {
