@@ -2,7 +2,7 @@
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # Exec fastfetch on terminal
-if [ "$(ps -o comm= -p $PPID)" = "alacritty" ]; then
+if [ "$(ps -o comm= -p $PPID)" = "alacritty" ] || [ "$(ps -o comm= -p $PPID)" = "kgx" ]; then
     fastfetch
 fi
 
