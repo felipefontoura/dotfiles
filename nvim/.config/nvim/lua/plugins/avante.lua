@@ -4,8 +4,8 @@ return {
     event = "VeryLazy",
     version = false,
     opts = {
-      -- provider = "claude",
-      provider = "copilot",
+      provider = "claude",
+      -- provider = "copilot",
     },
     build = "make",
     dependencies = {
