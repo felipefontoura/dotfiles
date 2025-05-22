@@ -100,7 +100,11 @@ alias gcf="git config --list"  # List config
 
 # Rails
 alias rce="bin/rails credentials:edit"
+alias rced="bin/rails credentials:edit -e development"
+alias rcep="bin/rails credentials:edit -e production"
 alias rcs="bin/rails credentials:show"
+alias rcsd="bin/rails credentials:show -e development"
+alias rcsp="bin/rails credentials:show -e production"
 
 alias rgmi="bin/rails generate migration"
 alias rdmi="bin/rails destroy migration"
@@ -108,6 +112,8 @@ alias rgmd="bin/rails generate model"
 alias rdmd="bin/rails destroy model"
 alias rgct="bin/rails generate controller"
 alias rdct="bin/rails destroy controller"
+alias rgsc="bin/rails generate scaffold_controller"
+alias rdsc="bin/rails destroy scaffold_controller"
 alias rghp="bin/rails generate helper"
 alias rdhp="bin/rails destroy helper"
 alias rgjb="bin/rails generate job"
@@ -225,6 +231,14 @@ alias be="bundle exec"
 
 # Kamal
 alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa" -v /var/run/docker.sock:/var/run/docker.sock -e KAMAL_REGISTRY_PASSWORD=$(env | grep "^KAMAL_" | cut -d '=' -f2) ghcr.io/basecamp/kamal:latest'
+alias kd="bin/kamal deploy"
+alias kl="bin/kamal logs"
+alias klf="bin/kamal logs --follow"
+alias klt="bin/kamal logs --tail"
+alias kex="bin/kamal exec"
+alias kexh="bin/kamal exec --help"
+alias kc="bin/kamal console"
+alias ks="bin/kamal shell"
 
 # Neovim
 alias n="nvim"
@@ -252,6 +266,32 @@ alias htop="btop"
 alias t="tmux"
 alias td="tmux source-file ~/.tmux/dev-layout.tmux"
 alias tdr="tmux source-file ~/.tmux/dev-layout-rails.tmux"
+
+# Python
+alias py="python"
+alias ipy="ipython"
+alias pyt="pytest"
+alias pytv="pytest -v"  # Verbose output
+alias pytxvs="pytest -xvs"  # Verbose, stop on first failure, no capture
+alias pyts="pytest -s"  # No output capture
+alias pytcov="pytest --cov=."  # Run with coverage
+alias pytcovr="pytest --cov=. --cov-report=html"  # Generate HTML coverage report
+
+# Virtual Environment
+alias venv="python -m venv venv"
+alias va="source venv/bin/activate"
+alias vd="deactivate"
+
+# Pip
+alias pi="pip install"
+alias pir="pip install -r requirements.txt"
+alias piu="pip install --upgrade"
+alias piup="pip install --upgrade pip"
+alias pis="pip search"
+alias pif="pip freeze"
+alias pifl="pip freeze > requirements.txt"
+alias pil="pip list"
+alias piu="pip uninstall"
 
 # Others
 alias o="xdg-open"
