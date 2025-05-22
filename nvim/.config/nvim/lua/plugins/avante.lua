@@ -2,10 +2,9 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
-    version = false,
+    version = "v0.0.23",
     opts = {
       provider = "claude",
-      -- provider = "copilot",
     },
     build = "make",
     dependencies = {
