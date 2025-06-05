@@ -1032,12 +1032,12 @@ cleanup_cache() {
 
 show_completion_message() {
   print_header "Setup Complete!"
-  echo "Your system has been configured successfully with GNOME desktop environment."
+  echo "Your system has been configured successfully with Hyprland desktop environment."
   echo "Please log out and log back in for all changes to take effect."
 
   # Display additional information
   echo -e "\n\033[1;32mSummary:\033[0m"
-  echo "- Desktop Environment: GNOME"
+  echo "- Desktop Environment: Hyprland"
   echo "- Node.js: $NODEJS_VERSION"
   echo "- Ruby: $RUBY_VERSION"
   echo "- Python: $PYTHON_VERSION"
