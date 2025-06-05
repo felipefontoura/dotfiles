@@ -14,7 +14,7 @@ The setup script will:
 - Install YAY (AUR helper)
 - Set up ZSH with Starship
 - Install and configure dotfiles using Stow
-- Install development tools (MISE, Node.js, Ruby, Python)
+- Install development tools (asdf, Node.js, Ruby, Python)
 - Install desktop applications and utilities for Hyprland
 - Configure system services
 
