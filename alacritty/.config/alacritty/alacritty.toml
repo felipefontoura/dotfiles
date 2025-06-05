@@ -1,6 +1,4 @@
-general.import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
-]
+general.import = ["~/.config/alacritty/tokyo-night.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -10,7 +8,7 @@ padding.x = 10
 padding.y = 10
 
 [font]
-size = 10 
+size = 11
 builtin_box_drawing = true
 
 [font.bold]
