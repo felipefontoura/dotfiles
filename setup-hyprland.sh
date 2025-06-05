@@ -252,6 +252,30 @@ setup_tmux() {
 # DOTFILES SETUP
 #######################################
 
+# Function to clean existing config directories that might conflict with stow
+clean_config_dirs() {
+  print_info "Cleaning existing configuration directories that might conflict with stow..."
+
+  # List of directories to remove before stowing
+  local dirs_to_clean=(
+    "$HOME/.config/hypr"
+    "$HOME/.config/kitty"
+  )
+
+  for dir in "${dirs_to_clean[@]}"; do
+    if [ -d "$dir" ]; then
+      print_warning "Removing existing directory: $dir"
+      rm -rf "$dir" && {
+        print_success "Removed $dir successfully"
+        log "Removed $dir successfully"
+      } || {
+        print_error "Failed to remove $dir"
+        log "Failed to remove $dir"
+      }
+    fi
+  done
+}
+
 setup_dotfiles() {
   print_header "Dotfiles"
 
@@ -277,6 +301,9 @@ setup_dotfiles() {
       return 1
     }
   fi
+
+  # Clean existing config directories that might conflict with stow
+  clean_config_dirs
 
   # Define base configs
   local configs=(
