@@ -172,7 +172,7 @@ setup_shell() {
     fzf bat eza zoxide plocate fd tldr zsh ripgrep procs grex btop dust tmux
     superfile-bin stow ufw curl usbutils pwgen wmctrl dosfstools exfatprogs
     ntfs-3g f2fs-tools p7zip rar zip unzip rsync rclone man-db man-pages
-    fastfetch starship ttf-ibmplex-mono-nerd
+    fastfetch zsh-theme-powerlevel10k ttf-ibmplex-mono-nerd
   )
   install_group "Shell Utilities" "${shell_utils[@]}"
 
