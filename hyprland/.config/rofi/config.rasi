@@ -1,8 +1,8 @@
 configuration{
-    modi: "run,window,combi,calc";
+    modi: "run,window,combi,calc,emoji";
     icon-theme: "Papirus-Dark";
     show-icons: true;
-    terminal: "alacritty";
+    terminal: "kitty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -11,7 +11,8 @@ configuration{
     display-window: " 󰹟 ";
     display-combi: "  ";
     display-calc: "  ";
+    display-emoji: " 󰞅 ";
     sidebar-mode: true;
 }
 
-@theme "tokyo-night"
+@theme "theme"

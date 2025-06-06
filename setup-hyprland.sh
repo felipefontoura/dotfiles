@@ -630,9 +630,13 @@ setup_desktop_environment() {
     hyprshot
     nautilus
     swaync
+    rofi-wayland
+    rofi-calc
+    rofi-emoji
+    rofi-power-menu
     ttf-font-awesome
-    wofi
     xdg-desktop-portal-hyprland
+    wtype
   )
   install_group "Hyprland" "${hyprland_packages[@]}"
 
