@@ -1,9 +1,8 @@
-/* Waybar styling */
-@import "catppuccin.css";
+/* Waybar styling - Tokyo Night Theme */
 
 * {
     font-family: "BlexMono Nerd Font", "Font Awesome 6 Free";
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     border: none;
     border-radius: 0;
@@ -14,10 +13,10 @@
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.8);
-    color: #cdd6f4;
+    background: rgba(26, 27, 38, 0.1);
+    color: #a9b1d6;
     border-radius: 10px;
-    border: 2px solid #313244;
+    border: none;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -27,40 +26,35 @@ window#waybar.hidden {
 }
 
 #workspaces {
-    background-color: #313244;
+    background-color: #24283b;
     border-radius: 10px;
     margin: 5px;
     padding: 0 5px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    color: #cdd6f4;
-    border-radius: 8px;
+    color: #a9b1d6;
+    border-radius: 10px;
     margin: 5px 2px;
+    padding: 1px 7px 1px 5px;
     transition: all 0.3s ease;
 }
-
-#workspaces button.active {
-    background-color: #a6adc8;
-    color: #1e1e2e;
-    box-shadow: inset 0 0 0 2px #cdd6f4;
-}
-
 #workspaces button:hover {
-    background-color: #cba6f7;
-    color: #1e1e2e;
-    box-shadow: inset 0 0 0 2px #cdd6f4;
+    background-color: #bb9af7;
+    color: #1a1b26;
 }
-
+#workspaces button.active,
+#workspaces button.visible {
+    color: #7aa2f7;
+}
 #workspaces button.urgent {
-    background-color: #f38ba8;
-    color: #1e1e2e;
+    background-color: #f7768e;
+    color: #1a1b26;
 }
 
 #mode {
-    background-color: #f38ba8;
-    color: #1e1e2e;
+    background-color: #f7768e;
+    color: #1a1b26;
     border-radius: 10px;
     margin: 5px;
     padding: 0 10px;
@@ -83,8 +77,8 @@ window#waybar.hidden {
 #idle_inhibitor,
 #mpd,
 #language {
-    background-color: #313244;
-    color: #cdd6f4;
+    background-color: #24283b;
+    color: #a9b1d6;
     border-radius: 10px;
     margin: 5px;
     padding: 0 10px;
@@ -92,62 +86,62 @@ window#waybar.hidden {
 }
 
 #window {
-    background-color: #313244;
-    color: #cdd6f4;
+    background-color: #24283b;
+    color: #a9b1d6;
     border-radius: 10px;
     margin: 5px;
     padding: 0 10px;
 }
 
 #battery.charging, #battery.plugged {
-    color: #a6e3a1;
+    color: #9ece6a;
 }
 
 #battery.warning:not(.charging) {
-    color: #f9e2af;
+    color: #e0af68;
 }
 
 #battery.critical:not(.charging) {
-    color: #f38ba8;
+    color: #f7768e;
     animation: blink 0.5s linear infinite alternate;
 }
 
 #cpu.warning {
-    color: #f9e2af;
+    color: #e0af68;
 }
 
 #cpu.critical {
-    color: #f38ba8;
+    color: #f7768e;
 }
 
 #memory.warning {
-    color: #f9e2af;
+    color: #e0af68;
 }
 
 #memory.critical {
-    color: #f38ba8;
+    color: #f7768e;
 }
 
 #temperature.critical {
-    color: #f38ba8;
+    color: #f7768e;
 }
 
 #custom-power {
-    color: #f38ba8;
+    color: #f7768e;
     font-size: 16px;
     padding: 0 12px;
 }
 
 #custom-spotify {
-    color: #a6e3a1;
+    color: #9ece6a;
 }
 
 #custom-spotify.playing {
-    color: #a6e3a1;
+    color: #9ece6a;
 }
 
 #custom-spotify.paused {
-    color: #cba6f7;
+    color: #bb9af7;
 }
 
 #tray {
@@ -163,17 +157,17 @@ window#waybar.hidden {
 }
 
 #idle_inhibitor {
-    color: #cdd6f4;
+    color: #a9b1d6;
 }
 
 #idle_inhibitor.activated {
-    color: #f9e2af;
+    color: #e0af68;
 }
 
 @keyframes blink {
     to {
-        background-color: #f38ba8;
-        color: #1e1e2e;
+        background-color: #f7768e;
+        color: #1a1b26;
     }
 }
 
