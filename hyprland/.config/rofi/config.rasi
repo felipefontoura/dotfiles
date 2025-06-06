@@ -1,5 +1,6 @@
 configuration{
-    modi: "run,window,combi,calc,emoji";
+    modi: "run,window,drun,combi,calc,emoji";
+    combi-modi: "window,drun,run,calc,emoji";
     icon-theme: "Papirus-Dark";
     show-icons: true;
     terminal: "kitty";
@@ -8,6 +9,7 @@ configuration{
     disable-history: false;
     hide-scrollbar: true;
     display-drun: " 󰞷 ";
+    display-run: " 󱓞 ";
     display-window: " 󰹟 ";
     display-combi: "  ";
     display-calc: "  ";
