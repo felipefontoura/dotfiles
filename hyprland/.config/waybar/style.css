@@ -2,7 +2,7 @@
 
 * {
     font-family: "BlexMono Nerd Font", "Font Awesome 6 Free";
-    font-size: 9px;
+    font-size: 10px;
     font-weight: bold;
     border: none;
     border-radius: 0;
@@ -43,9 +43,8 @@ window#waybar.hidden {
     background-color: #bb9af7;
     color: #1a1b26;
 }
-#workspaces button.active,
-#workspaces button.visible {
-    color: #7aa2f7;
+#workspaces button.active {
+    background-color: #7aa2f7;
 }
 #workspaces button.urgent {
     background-color: #f7768e;
@@ -71,7 +70,6 @@ window#waybar.hidden {
 #pulseaudio,
 #custom-media,
 #custom-power,
-#custom-weather,
 #custom-spotify,
 #tray,
 #idle_inhibitor,
