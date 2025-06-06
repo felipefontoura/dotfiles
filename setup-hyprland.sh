@@ -625,6 +625,7 @@ setup_games() {
 
 setup_desktop_environment() {
   local hyprland_packages=(
+    hyprpaper
     hyprlock
     hyprpolkitagent
     hyprshot
@@ -636,6 +637,7 @@ setup_desktop_environment() {
     rofi-power-menu
     ttf-font-awesome
     xdg-desktop-portal-hyprland
+    waybar
     wtype
   )
   install_group "Hyprland" "${hyprland_packages[@]}"
@@ -671,6 +673,7 @@ setup_utility_applications() {
     kitty
     localsend-bin
     logseq-desktop-bin
+    qalculate-gtk
     rnote
     texlive-latex
     texlive-latexextra
@@ -691,19 +694,19 @@ setup_keyboard() {
 
 setup_media_applications() {
   local media_apps=(
-    inkscape
-    gimp
-    blender
     audacity
+    blender
+    gimp
+    handbrake
+    inkscape
+    metadata-cleaner
+    obs-advanced-masks
+    obs-move-transition
+    obs-source-clone
     obs-studio
     v4l2loopback-dkms
-    obs-source-clone
-    obs-move-transition
-    obs-advanced-masks
-    handbrake
     vlc
     yt-dlp
-    metadata-cleaner
   )
   install_group "Media and Creative Applications" "${media_apps[@]}"
 }
