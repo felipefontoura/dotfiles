@@ -630,6 +630,7 @@ setup_desktop_environment() {
     hyprshot
     nautilus
     swaync
+    ttf-font-awesome
     wofi
     xdg-desktop-portal-hyprland
   )
