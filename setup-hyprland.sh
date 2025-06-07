@@ -631,6 +631,7 @@ setup_desktop_environment() {
     hyprshot
     nautilus
     swaync
+    pavucontrol
     rofi-wayland
     rofi-calc
     rofi-emoji
