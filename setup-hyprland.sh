@@ -625,6 +625,7 @@ setup_games() {
 
 setup_desktop_environment() {
   local hyprland_packages=(
+    brightnessctl
     hyprpaper
     hyprlock
     hyprpolkitagent
