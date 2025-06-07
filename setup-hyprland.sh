@@ -632,6 +632,7 @@ setup_desktop_environment() {
     hyprpolkitagent
     hyprshot
     nautilus
+    papers
     swaync
     pavucontrol
     rofi-wayland
