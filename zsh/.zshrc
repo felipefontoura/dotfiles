@@ -267,6 +267,9 @@ alias t="tmux"
 alias td="tmux source-file ~/.tmux/dev-layout.tmux"
 alias tdr="tmux source-file ~/.tmux/dev-layout-rails.tmux"
 
+# zellij
+alias z="zellij"
+
 # Python
 alias py="python"
 alias ipy="ipython"
