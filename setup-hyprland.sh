@@ -631,6 +631,7 @@ setup_desktop_environment() {
     hyprlock
     hyprpolkitagent
     hyprshot
+    gnome-disk-utility
     nautilus
     papers
     swaync
