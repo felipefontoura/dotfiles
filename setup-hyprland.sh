@@ -722,6 +722,9 @@ setup_media_applications() {
 setup_system() {
   print_header "System Configuration"
 
+  # Configure lightdm greeter
+  setup_lightdm
+
   # Configure NVIDIA GPU if present
   setup_nvidia
 
@@ -733,6 +736,21 @@ setup_system() {
 
   # Configure firewall
   setup_firewall
+}
+
+setup_lightdm() {
+  print_info "Configure LightDM..."
+
+  sudo bash -c 'cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
+[greeter]
+theme-name=Tokyonight-Dark
+icon-theme-name=Papirus-Dark
+font-name=Open Sans 11
+indicators = ;~session;~power
+EOF'
+
+  print_success "LightDM configured."
+  log "LightDM configured."
 }
 
 setup_nvidia() {
