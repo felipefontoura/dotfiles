@@ -125,6 +125,19 @@ setup_service() {
   }
 }
 
+# Service user management
+setup_user_service() {
+  local service_name="$1"
+  print_info "Setting up $service_name user service..."
+  systemctl --user enable --now "$service_name.service" && {
+    print_success "$service_name service enabled and started"
+    log "$service_name user service enabled and started"
+  } || {
+    print_error "Failed to enable/start $service_name user service"
+    log "Failed to enable/start $service_name user service"
+  }
+}
+
 #######################################
 # PACKAGE MANAGER SETUP
 #######################################
@@ -315,6 +328,7 @@ setup_dotfiles() {
     "gtk"
     "hyprland"
     "kitty"
+    "mpd"
     "nvim"
     "p10k"
     "ruby"
@@ -555,6 +569,9 @@ setup_desktop_applications() {
   # Install keyboard utilities
   setup_keyboard
 
+  # Setup mpd
+  setup_mpd() {
+  
   # Install media and creative applications
   setup_media_applications
 
@@ -695,6 +712,17 @@ setup_keyboard() {
     kbd-br-thinkpad
   )
   install_group "Keyboard" "${keyboard_packages[@]}"
+}
+
+setup_mpd() {
+  local mpd_packages=(
+    mpd
+    mpc
+    ncmpcpp
+  )
+  install_group "MPD" "${mpd_packages[@]}"
+
+  setup_user_service mpd
 }
 
 setup_media_applications() {
