@@ -644,13 +644,14 @@ setup_desktop_environment() {
     cava
     hyprpaper
     hyprlock
-    hyprpolkitagent
     hyprshot
     gnome-disk-utility
+    gnome-keyring
     nautilus
     papers
     swaync
     pavucontrol
+    polkit-gnome
     rofi-wayland
     rofi-calc
     rofi-emoji
