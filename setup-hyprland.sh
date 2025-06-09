@@ -334,6 +334,7 @@ setup_dotfiles() {
     "ruby"
     "tmux"
     "typora"
+    "zellij"
     "zsh"
   )
 
