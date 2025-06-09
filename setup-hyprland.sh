@@ -910,6 +910,24 @@ EOF'
     log "LocalSend allowed in firewall"
   }
 
+  # Create Minecraft application definition
+  sudo bash -c 'cat > /etc/ufw/applications.d/minecraft-server << EOF
+[MinecraftServer]
+title=Minecraft Server
+description=Minecraft game server.
+ports=25565
+EOF'
+
+  sudo ufw app update MinecraftServer && {
+    print_success "MinecraftServer application defined in UFW"
+    log "MinecraftServer application defined in UFW"
+  }
+
+  sudo ufw allow minecraft-server && {
+    print_success "MinecraftServer allowed in firewall"
+    log "MinecraftServer allowed in firewall"
+  }
+
   # Enable firewall if configured to do so
   if [[ "$ENABLE_FIREWALL" == "true" ]]; then
     print_info "Enabling firewall with default deny policy..."
