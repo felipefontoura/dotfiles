@@ -2,7 +2,7 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
-    version = "v0.0.23",
+    version = "v0.0.24",
     opts = {
       provider = "claude",
     },
