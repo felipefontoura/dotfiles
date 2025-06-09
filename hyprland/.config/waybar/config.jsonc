@@ -15,6 +15,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "custom/mpd",
     "pulseaudio",
     "power-profiles-daemon",
     "cpu",
@@ -42,6 +43,14 @@
       "active": "",
       "default": ""
     }
+  },
+  "custom/mpd": {
+    "format": "♪ {text}",
+    "interval": 10,
+    "exec": "mpc current",
+    "exec-if": "pgrep mpd",
+    "on-click": "mpc toggle",
+    "on-click-right": "kitty ncmpc"
   },
   "tray": {
     // "icon-size": 21,
