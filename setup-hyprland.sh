@@ -569,9 +569,6 @@ setup_desktop_applications() {
   # Install keyboard utilities
   setup_keyboard
 
-  # Setup mpd
-  setup_mpd() {
-  
   # Install media and creative applications
   setup_media_applications
 
@@ -714,17 +711,6 @@ setup_keyboard() {
   install_group "Keyboard" "${keyboard_packages[@]}"
 }
 
-setup_mpd() {
-  local mpd_packages=(
-    mpd
-    mpc
-    ncmpcpp
-  )
-  install_group "MPD" "${mpd_packages[@]}"
-
-  setup_user_service mpd
-}
-
 setup_media_applications() {
   local media_apps=(
     audacity
@@ -733,6 +719,9 @@ setup_media_applications() {
     handbrake
     inkscape
     metadata-cleaner
+    mpd
+    mpc
+    ncmpcpp
     obs-advanced-masks
     obs-move-transition
     obs-source-clone
@@ -742,6 +731,8 @@ setup_media_applications() {
     yt-dlp
   )
   install_group "Media and Creative Applications" "${media_apps[@]}"
+
+  setup_user_service mpd
 }
 
 #######################################
@@ -970,21 +961,15 @@ setup_organize_applications() {
   # Function to hide an application from the menu
   hide_application() {
     local app_id="$1"
-    local app_path="/usr/share/applications/$app_id"
     local local_path="$HOME/.local/share/applications/$app_id"
 
-    if [ -f "$app_path" ]; then
-      print_info "Hiding $app_id from application menu..."
-      # Copy the original .desktop file
-      cp "$app_path" "$local_path"
-      # Add NoDisplay=true to hide it
-      echo "NoDisplay=true" >>"$local_path"
-      print_success "Hidden: $app_id"
-      log "Hidden application: $app_id"
-    else
-      print_warning "$app_id not found, skipping"
-      log "Application not found: $app_id"
-    fi
+    print_info "Hiding $app_id from application menu..."
+    bash -c "cat > ${local_path} << EOF
+[Desktop Entry]
+NoDisplay=true
+EOF"
+    print_success "Hidden: $app_id"
+    log "Hidden application: $app_id"
   }
 
   # System utilities that should not appear in the app grid
@@ -1011,9 +996,13 @@ setup_organize_applications() {
     "avahi-discover.desktop"
     "bssh.desktop"
     "bvnc.desktop"
+    "cmake.desktop"
     "lstopo.desktop"
     "qv4l2.desktop"
     "qvidcap.desktop"
+    "rofi.desktop"
+    "rofi-theme-selector.desktop"
+    "uuctl.desktop"
     "uxterm.desktop"
     "xterm.desktop"
     "xdvi.desktop"
