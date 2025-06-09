@@ -9,10 +9,10 @@
   "margin-bottom": 0,
   "gtk-layer-shell": true,
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/window"
   ],
   "modules-center": [
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "custom/mpd",
