@@ -50,7 +50,7 @@
     "exec": "mpc current",
     "exec-if": "pgrep mpd",
     "on-click": "mpc toggle",
-    "on-click-right": "kitty ncmpc"
+    "on-click-right": "kitty rmpc"
   },
   "tray": {
     // "icon-size": 21,

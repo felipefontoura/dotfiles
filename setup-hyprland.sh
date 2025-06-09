@@ -721,7 +721,7 @@ setup_media_applications() {
     metadata-cleaner
     mpd
     mpc
-    ncmpcpp
+    rmpc
     obs-advanced-masks
     obs-move-transition
     obs-source-clone
