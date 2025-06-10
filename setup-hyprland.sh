@@ -693,7 +693,6 @@ setup_utility_applications() {
     keepassxc
     kitty
     localsend-bin
-    logseq-desktop-bin
     qalculate-gtk
     rnote
     texlive-latex
