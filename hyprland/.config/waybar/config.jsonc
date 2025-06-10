@@ -71,10 +71,12 @@
   },
   "cpu": {
     "format": "{usage}% ",
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "kitty btop"
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% ",
+    "on-click": "kitty btop"
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -86,7 +88,8 @@
       "",
       "",
       ""
-    ]
+    ],
+    "on-click": "kitty btop"
   },
   "battery": {
     "states": {
@@ -107,7 +110,8 @@
       "",
       "",
       ""
-    ]
+    ],
+    "on-click-right": "kitty btop"
   },
   "battery#bat2": {
     "bat": "BAT2"
