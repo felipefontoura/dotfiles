@@ -747,6 +747,9 @@ setup_system() {
   # Configure lightdm greeter
   setup_lightdm
 
+  # Setup gnome theme
+  setup_gtk_theme
+
   # Configure NVIDIA GPU if present
   setup_nvidia
 
@@ -773,6 +776,17 @@ EOF'
 
   print_success "LightDM configured."
   log "LightDM configured."
+}
+
+setup_gtk_theme() {
+  print_info "Configure GTK themes..."
+
+  gsettings set org.gnome.desktop.interface gtk-theme "Tokyonight-Dark"
+  gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+  gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
+  print_success "GTK themes configured."
+  log "GTK themes configured."
 }
 
 setup_nvidia() {
