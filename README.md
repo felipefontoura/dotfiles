@@ -12,7 +12,7 @@ curl -sSL https://raw.githubusercontent.com/felipefontoura/dotfiles/main/setup-h
 The setup script will:
 
 - Install YAY (AUR helper)
-- Set up ZSH with Starship
+- Set up ZSH with Powerlevel10k
 - Install and configure dotfiles using Stow
 - Install development tools (asdf, Node.js, Ruby, Python)
 - Install desktop applications and utilities for Hyprland
