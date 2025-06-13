@@ -220,6 +220,7 @@ alias rdbcr="bin/rails db:create"
 alias rdbmi="bin/rails db:migrate"
 alias rdbrb="bin/rails db:rollback"
 alias rdbsd="bin/rails db:seed"
+alias rdbsdr="bin/rails db:seed:replant"
 
 alias fsd="bundle exec foreman start -f Procfile.dev"
 alias fsp="bundle exec foreman start -f Procfile"
@@ -298,6 +299,7 @@ alias piu="pip uninstall"
 
 # Others
 alias o="xdg-open"
+alias m="rmpc"
 
 function d() {
   cd ~/Development/"$1"
