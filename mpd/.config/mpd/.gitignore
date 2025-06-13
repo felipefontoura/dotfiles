@@ -1,4 +1,3 @@
-playlists
+*
 !playlists/.keep
-pid
-state
+!mpd.conf
