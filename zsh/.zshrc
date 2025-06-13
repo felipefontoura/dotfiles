@@ -69,6 +69,7 @@ alias gdf="git diff"
 alias gdfs="git diff --staged"  # Show diff of staged changes
 alias gad="git add"
 alias gada="git add --all"  # Add all changes
+alias grm="git rm"   # Remove files
 alias gcm="git commit"
 alias gcmm="git commit -m"  # Commit with message
 alias gcma="git commit --amend"  # Amend previous commit
