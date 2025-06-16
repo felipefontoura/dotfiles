@@ -642,6 +642,7 @@ setup_desktop_environment() {
   local hyprland_packages=(
     brightnessctl
     cava
+    hypridle
     hyprpaper
     hyprlock
     hyprshot
@@ -657,6 +658,7 @@ setup_desktop_environment() {
     rofi-emoji
     rofi-power-menu
     ttf-font-awesome
+    xdg-desktop-portal-gnome
     xdg-desktop-portal-hyprland
     waybar
     wtype
