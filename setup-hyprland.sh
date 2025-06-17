@@ -695,6 +695,7 @@ setup_utility_applications() {
     keepassxc
     kitty
     localsend-bin
+    mpv
     qalculate-gtk
     rnote
     texlive-latex
