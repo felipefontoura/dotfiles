@@ -650,6 +650,7 @@ setup_desktop_environment() {
     gnome-keyring
     nautilus
     papers
+    playerctl
     swaync
     pavucontrol
     polkit-gnome
