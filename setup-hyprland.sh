@@ -720,6 +720,7 @@ setup_media_applications() {
   local media_apps=(
     audacity
     blender
+    egl-wayland
     gimp
     handbrake
     inkscape
