@@ -125,12 +125,12 @@ alias rdat="bin/rails destroy authentication"
 alias rc="bin/rails console"
 alias rr="bin/rails routes"
 
-alias rt="bin/rails test"
-alias rtm="bin/rails test:models"
-alias rtc="bin/rails test:controllers"
-alias rth="bin/rails test:helpers"
-alias rts="bin/rails test:system"
-alias rta="bin/rails test:all"
+alias rt="RUBYOPT='-W:no-deprecated' bin/rails test"
+alias rtm="RUBYOPT='-W:no-deprecated' bin/rails test:models"
+alias rtc="RUBYOPT='-W:no-deprecated' bin/rails test:controllers"
+alias rth="RUBYOPT='-W:no-deprecated' bin/rails test:helpers"
+alias rts="RUBYOPT='-W:no-deprecated' bin/rails test:system"
+alias rta="RUBYOPT='-W:no-deprecated' bin/rails test:all"
 
 alias rl="bin/rubocop"
 alias rlf="bin/rubocop -a"
@@ -157,7 +157,7 @@ function rtf() {
   echo "${BLUE}󱓟 Running full test suite...${NC}"
   
   echo "${MAGENTA}󱇧 Running Rails tests...${NC}"
-  if ! output=$(bin/rails test:all 2>&1); then
+  if ! output=$(RUBYOPT='-W:no-deprecated' bin/rails test:all 2>&1); then
     echo "$output"
   fi
   local tests_status=$?
