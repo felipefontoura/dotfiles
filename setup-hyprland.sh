@@ -734,6 +734,9 @@ setup_media_applications() {
     obs-studio
     v4l2loopback-dkms
     vlc
+    vlc-plugin-ffmpeg
+    vlc-plugin-x264
+    vlc-plugin-x265
     yt-dlp
   )
   install_group "Media and Creative Applications" "${media_apps[@]}"
