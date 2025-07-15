@@ -263,6 +263,7 @@ alias htop="btop"
 #alias find='fd'
 #alias grep='rg'
 #alias ps='procs'
+alias scp="scp -O"
 
 # tmux
 alias t="tmux"
