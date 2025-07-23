@@ -499,7 +499,7 @@ setup_dev_tools() {
 
   # Install development tools
   local dev_tools=(
-    docker docker-buildx lazydocker-bin lazygit neovim neovim-notify
+    docker docker-buildx docker-compose lazydocker-bin lazygit neovim neovim-notify
     wl-clipboard xsel xclip tree-sitter-cli harper jdk-openjdk
   )
   install_group "Development Tools" "${dev_tools[@]}"
