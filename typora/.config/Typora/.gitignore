@@ -1,0 +1,5 @@
+*
+!.gitignore
+!themes/
+themes/*
+!themes/tokyo-night.css
