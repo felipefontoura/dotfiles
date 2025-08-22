@@ -5,17 +5,17 @@ This repository contains my personal configuration files for various application
 ## Usage
 
 ```sh
-curl -sSL https://raw.githubusercontent.com/felipefontoura/dotfiles/main/setup-hyprland.sh | bash
+curl -sSL https://raw.githubusercontent.com/felipefontoura/dotfiles/main/setup-omarchy.sh | bash
 ```
 
 
 The setup script will:
 
 - Install YAY (AUR helper)
-- Set up ZSH with Powerlevel10k
+- Set up BASH with Startship
 - Install and configure dotfiles using Stow
-- Install development tools (asdf, Node.js, Ruby, Python)
-- Install desktop applications and utilities for Hyprland
+- Install development tools (Node.js, Ruby)
+- Install desktop applications and utilities
 - Configure system services
 
 ## License
