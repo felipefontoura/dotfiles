@@ -3,12 +3,14 @@
 source ~/.local/share/omarchy/default/bash/rc
 
 # Load envs
-if [[ -f "~/.env" ]]; then
+if [ -f ~/.env ]; then
   source ~/.env
 fi
 
 # Load aliases
-source ~/.aliases
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
 
 # Add your own exports, aliases, and functions here.
 #
