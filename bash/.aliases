@@ -125,7 +125,6 @@ alias lzd="lazydocker"
 alias scp="scp -O"
 
 # Navigation
-alias w="cd ~/Work"
 alias h="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."

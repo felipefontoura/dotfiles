@@ -17,3 +17,8 @@ fi
 if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
+
+# Load custom functions
+if [ -f ~/.bash_functions ]; then
+  source ~/.bash_functions
+fi
