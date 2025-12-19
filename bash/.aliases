@@ -1,5 +1,9 @@
 # Set my aliases
 
+# Elgato keylights
+alias lon="elgato-key-light on"
+alias loff="elgato-key-light off"
+
 # Git
 alias g="git"
 alias gcl="git clone"

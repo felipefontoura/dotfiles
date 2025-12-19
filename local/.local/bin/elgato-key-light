@@ -1,0 +1,287 @@
+#!/bin/bash
+
+# Controls Elgato Keylights.
+#
+# Usage: elgato-key-light <command> [options]
+#
+# Commands:
+#   on                     Turn lights on
+#   off                    Turn lights off
+#   toggle                 Toggle lights on/off based on current state
+#   brightness <0-100>     Set brightness (0-100%)
+#   temperature <143-344>  Set color temperature (143=7000K warm, 344=2900K cool)
+#   temp <kelvin>          Set temperature in Kelvin (2900-7000K)
+#   status                 Show current status of all lights
+#   identify               Flash lights for identification
+#   set <on> <bright> <temp> Set all parameters at once
+#
+# Configuration:
+#   Set ELGATO_LIGHTS environment variable with comma-separated host:port list
+#   Example: ELGATO_LIGHTS=192.168.1.111:9123,192.168.1.112:9123
+#   To find addresses: avahi-browse -t _elg._tcp --resolve
+
+set -euo pipefail
+
+# TODO setup to your environment file or set ELGATO_LIGHTS
+#
+# source /some/path/.env
+# OR
+# ELGATO_LIGHTS=192.168.1.111:9123,192.168.1.112:9123,...
+
+function show_usage() {
+  >&2 echo "Usage: ${0##*/} <command> [options]"
+  >&2 echo ""
+  >&2 echo "Commands:"
+  >&2 echo "  on                         Turn lights on"
+  >&2 echo "  off                        Turn lights off"
+  >&2 echo "  toggle                     Toggle lights on/off"
+  >&2 echo "  brightness <0-100>         Set brightness percentage"
+  >&2 echo "  temperature <143-344>      Set color temperature (raw value)"
+  >&2 echo "  temp <2900-7000>           Set temperature in Kelvin"
+  >&2 echo "  status                     Show current status"
+  >&2 echo "  identify                   Flash lights for identification"
+  >&2 echo "  set <on|off> <0-100> <143-344>  Set all parameters"
+  exit 2
+}
+
+function kelvin_to_raw() {
+  local kelvin=$1
+  if [[ $kelvin -lt 2900 || $kelvin -gt 7000 ]]; then
+    >&2 echo "Error: Kelvin must be between 2900 and 7000"
+    exit 1
+  fi
+  echo $(( 1000000 / kelvin - 10 ))
+}
+
+function raw_to_kelvin() {
+  local raw=$1
+  echo $(( 1000000 / (raw + 10) ))
+}
+
+function api_put() {
+  local host=$1
+  local json=$2
+  curl --silent "http://$host/elgato/lights" \
+    -X PUT \
+    -H 'Content-Type: application/json' \
+    -d "$json" >/dev/null
+}
+
+function api_get() {
+  local host=$1
+  curl --silent "http://$host/elgato/lights" \
+    -X GET \
+    -H 'Accept: application/json'
+}
+
+function api_identify() {
+  local host=$1
+  curl --silent "http://$host/elgato/identify" \
+    -X POST >/dev/null
+}
+
+function light_on() {
+  local host=$1
+  local json='{"numberOfLights":1,"lights":[{"on":1}]}'
+  api_put "$host" "$json"
+}
+
+function light_off() {
+  local host=$1
+  local json='{"numberOfLights":1,"lights":[{"on":0}]}'
+  api_put "$host" "$json"
+}
+
+function light_toggle() {
+  local host=$1
+  local status=$(api_get "$host")
+  local current_state=$(echo "$status" | grep -o '"on":[0-9]' | head -1 | cut -d: -f2)
+
+  if [[ "$current_state" == "1" ]]; then
+    light_off "$host"
+    echo "  $host: toggled OFF"
+  else
+    light_on "$host"
+    echo "  $host: toggled ON"
+  fi
+}
+
+function light_brightness() {
+  local host=$1
+  local brightness=$2
+
+  if [[ $brightness -lt 0 || $brightness -gt 100 ]]; then
+    >&2 echo "Error: Brightness must be between 0 and 100"
+    exit 1
+  fi
+
+  local json='{"numberOfLights":1,"lights":[{"brightness":'$brightness'}]}'
+  api_put "$host" "$json"
+}
+
+function light_temperature() {
+  local host=$1
+  local temp=$2
+
+  if [[ $temp -lt 143 || $temp -gt 344 ]]; then
+    >&2 echo "Error: Temperature must be between 143 (warm/7000K) and 344 (cool/2900K)"
+    exit 1
+  fi
+
+  local json='{"numberOfLights":1,"lights":[{"temperature":'$temp'}]}'
+  api_put "$host" "$json"
+}
+
+function light_temp_kelvin() {
+  local host=$1
+  local kelvin=$2
+  local raw=$(kelvin_to_raw "$kelvin")
+  light_temperature "$host" "$raw"
+}
+
+function light_set_all() {
+  local host=$1
+  local on_value=$2
+  local brightness=$3
+  local temp=$4
+
+  if [[ "$on_value" == "on" ]]; then
+    on_value=1
+  elif [[ "$on_value" == "off" ]]; then
+    on_value=0
+  fi
+
+  local json='{"numberOfLights":1,"lights":[{"on":'$on_value',"brightness":'$brightness',"temperature":'$temp'}]}'
+  api_put "$host" "$json"
+}
+
+function light_status() {
+  local host=$1
+  local status=$(api_get "$host")
+
+  echo "Light: $host"
+
+  if command -v jq &> /dev/null; then
+    echo "$status" | jq -r '.lights[0] | "  Power: \(if .on == 1 then "ON" else "OFF" end)\n  Brightness: \(.brightness)%\n  Temperature: \(.temperature) (\(1000000 / (.temperature + 10))K)"'
+  else
+    local on=$(echo "$status" | grep -o '"on":[0-9]' | head -1 | cut -d: -f2)
+    local brightness=$(echo "$status" | grep -o '"brightness":[0-9]*' | head -1 | cut -d: -f2)
+    local temp=$(echo "$status" | grep -o '"temperature":[0-9]*' | head -1 | cut -d: -f2)
+    local kelvin=$(raw_to_kelvin "$temp")
+
+    if [[ "$on" == "1" ]]; then
+      echo "  Power: ON"
+    else
+      echo "  Power: OFF"
+    fi
+    echo "  Brightness: ${brightness}%"
+    echo "  Temperature: ${temp} (${kelvin}K)"
+  fi
+  echo ""
+}
+
+function light_identify() {
+  local host=$1
+  api_identify "$host"
+}
+
+if [[ "${1:-}" == "" ]]; then
+  show_usage
+fi
+
+IFS=',' read -r -a lights_array <<<"$ELGATO_LIGHTS"
+
+command=$1
+shift
+
+case "$command" in
+  on)
+    echo "Turning all lights ON"
+    for light in "${lights_array[@]}"; do
+      light_on "$light"
+    done
+    ;;
+
+  off)
+    echo "Turning all lights OFF"
+    for light in "${lights_array[@]}"; do
+      light_off "$light"
+    done
+    ;;
+
+  toggle)
+    echo "Toggling lights"
+    for light in "${lights_array[@]}"; do
+      light_toggle "$light"
+    done
+    ;;
+
+  brightness)
+    if [[ "${1:-}" == "" ]]; then
+      >&2 echo "Error: brightness value required (0-100)"
+      exit 1
+    fi
+    brightness=$1
+    echo "Setting brightness to ${brightness}%"
+    for light in "${lights_array[@]}"; do
+      light_brightness "$light" "$brightness"
+    done
+    ;;
+
+  temperature)
+    if [[ "${1:-}" == "" ]]; then
+      >&2 echo "Error: temperature value required (143-344)"
+      exit 1
+    fi
+    temp=$1
+    echo "Setting temperature to ${temp}"
+    for light in "${lights_array[@]}"; do
+      light_temperature "$light" "$temp"
+    done
+    ;;
+
+  temp)
+    if [[ "${1:-}" == "" ]]; then
+      >&2 echo "Error: temperature in Kelvin required (2900-7000)"
+      exit 1
+    fi
+    kelvin=$1
+    raw=$(kelvin_to_raw "$kelvin")
+    echo "Setting temperature to ${kelvin}K (raw: ${raw})"
+    for light in "${lights_array[@]}"; do
+      light_temperature "$light" "$raw"
+    done
+    ;;
+
+  status)
+    for light in "${lights_array[@]}"; do
+      light_status "$light"
+    done
+    ;;
+
+  identify)
+    echo "Flashing lights for identification"
+    for light in "${lights_array[@]}"; do
+      light_identify "$light"
+    done
+    ;;
+
+  set)
+    if [[ $# -lt 3 ]]; then
+      >&2 echo "Error: set requires 3 arguments: <on|off> <brightness> <temperature>"
+      exit 1
+    fi
+    on_value=$1
+    brightness=$2
+    temp=$3
+    echo "Setting lights: power=$on_value, brightness=${brightness}%, temperature=${temp}"
+    for light in "${lights_array[@]}"; do
+      light_set_all "$light" "$on_value" "$brightness" "$temp"
+    done
+    ;;
+
+  *)
+    >&2 echo "Error: Unknown command '$command'"
+    show_usage
+    ;;
+esac
