@@ -115,6 +115,41 @@ alias kexh="bin/kamal exec --help"
 alias kc="bin/kamal console"
 alias ks="bin/kamal shell"
 
+# pnpm
+alias p="pnpm"
+alias pi="pnpm install"
+alias pa="pnpm add"
+alias pad="pnpm add -D"
+alias prm="pnpm remove"
+alias px="pnpm dlx"
+
+# Dev
+alias pd="pnpm dev"
+alias pb="pnpm build"
+alias pl="pnpm lint"
+alias pf="pnpm format"
+alias pv="pnpm verify"
+alias pct="pnpm check-types"
+
+# Tests (como rt, rtm, rtc...)
+alias pt="pnpm test"
+alias ptw="pnpm test:watch"
+alias ptu="pnpm test:unit"
+alias pti="pnpm test:integration"
+alias pte="pnpm test:e2e"
+alias ptc="pnpm test:coverage"
+alias pta="pnpm test:all"
+
+# Database - Drizzle (como rdbmi, rdbrb...)
+alias pdbg="pnpm db:generate"
+alias pdbm="pnpm db:migrate"
+alias pdbs="pnpm db:status"
+
+# Docker (como fsd, fsp)
+alias pdu="pnpm docker:up"
+alias pdd="pnpm docker:down"
+alias pdl="pnpm docker:logs"
+
 # Neovim
 alias n="nvim"
 alias n.="nvim ."
