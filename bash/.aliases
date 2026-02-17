@@ -44,6 +44,15 @@ alias gft="git fetch"                                                           
 alias gfta="git fetch --all"                                                                                                                # Fetch all remotes
 alias grmt="git remote -v"                                                                                                                  # Show remotes
 alias gcf="git config --list"                                                                                                               # List config
+alias gwt="git worktree"                                                                                                                   # Worktree base
+alias gwtl="git worktree list"                                                                                                             # List worktrees
+alias gwta="git worktree add"                                                                                                              # Add worktree (existing branch)
+alias gwtab="git worktree add -b"                                                                                                          # Add worktree with new branch
+alias gwtrm="git worktree remove"                                                                                                          # Remove worktree
+alias gwtp="git worktree prune"                                                                                                            # Prune stale worktrees
+alias gwtm="git worktree move"                                                                                                             # Move worktree
+alias gwtlk="git worktree lock"                                                                                                            # Lock worktree
+alias gwtulk="git worktree unlock"                                                                                                         # Unlock worktree
 
 # Rails
 alias rce="bin/rails credentials:edit"
@@ -149,6 +158,24 @@ alias pdbs="pnpm db:status"
 alias pdu="pnpm docker:up"
 alias pdd="pnpm docker:down"
 alias pdl="pnpm docker:logs"
+
+# Claude Code
+alias c="claude"                                    # Interactive session
+alias cy="claude --dangerously-skip-permissions"    # Yolo mode (no permission prompts)
+alias cc="claude -c"                                # Continue last conversation
+alias cr="claude -r"                                # Resume conversation
+alias cpt="claude -p"                               # Print mode (non-interactive)
+alias cup="claude update"                           # Update
+
+# OpenCode
+alias oc="opencode"                                 # Interactive TUI
+alias occ="opencode -c"                             # Continue last session
+alias ocs="opencode -s"                             # Resume session by ID
+alias ocr="opencode run"                            # Run with message (non-interactive)
+alias ocw="opencode web"                            # Web interface
+alias ocp="opencode pr"                             # Fetch PR and run
+alias ocst="opencode stats"                         # Token usage & costs
+alias ocup="opencode upgrade"                       # Upgrade
 
 # Neovim
 alias n="nvim"
