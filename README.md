@@ -1,23 +1,38 @@
 # Dotfiles
 
-This repository contains my personal configuration files for various applications and tools.
+Personal configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-## Usage
+## Install
 
 ```sh
 curl -sSL https://raw.githubusercontent.com/felipefontoura/dotfiles/main/setup-omarchy.sh | bash
 ```
 
+## Packages
 
-The setup script will:
+| Package | What it configures |
+|---------|-------------------|
+| `ai` | Claude Code, OpenCode — shared commands, skills, permissions |
+| `bash` | Bash, aliases, env, functions |
+| `cava` | Audio visualizer |
+| `git` | Git config |
+| `hyprland` | Hyprland window manager |
+| `local` | Local bin scripts |
+| `mpd` | Music player daemon |
+| `nvim` | Neovim |
+| `ruby` | Ruby/Gems config |
+| `tmux` | Terminal multiplexer |
+| `typora` | Markdown editor themes |
 
-- Install YAY (AUR helper)
-- Set up BASH with Startship
-- Install and configure dotfiles using Stow
-- Install development tools (Node.js, Ruby)
-- Install desktop applications and utilities
-- Configure system services
+## Usage
+
+```sh
+cd ~/.dotfiles
+stow <package>      # link a package
+stow -R <package>   # re-link (after changes)
+stow -D <package>   # unlink
+```
 
 ## License
 
-This repository is licensed under the [MIT License](https://mit-license.org/).
+[MIT](https://mit-license.org/)
