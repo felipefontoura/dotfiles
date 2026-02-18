@@ -95,4 +95,4 @@ Proceed?
 - Each commit should not break the build in isolation when possible
 - If there are no changes, say so and stop
 - Do NOT amend existing commits
-- Do NOT push — only commit locally
+- Do NOT push automatically — after all commits succeed, ask: `Push to origin?`
