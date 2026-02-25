@@ -6,7 +6,7 @@ Analyze all changes and create atomic commits in logical order.
 2. Run `git diff` (unstaged) and `git diff --cached` (staged) to read all changes
 3. Check untracked files for relevance (ignore build artifacts, node_modules, etc.)
 4. Group changes into logical atomic commits
-5. Present the full commit plan and ask for confirmation
+5. Present the full commit plan
 6. Execute each commit in order
 
 ## Grouping Order
@@ -80,7 +80,6 @@ Present a clean, message-focused plan. Files go in a collapsed detail — the co
 
 </details>
 
-Proceed?
 ```
 
 - List only commit messages in the main view (numbered)
@@ -91,7 +90,7 @@ Proceed?
 
 - **NEVER** commit `.env`, credentials, secrets, private keys — warn and skip
 - **NEVER** commit `node_modules/`, `dist/`, `coverage/`, build artifacts
-- **ALWAYS** show the plan and wait for user confirmation before executing
+- **ALWAYS** show the plan, then execute immediately without asking for confirmation
 - Each commit should not break the build in isolation when possible
 - If there are no changes, say so and stop
 - Do NOT amend existing commits
