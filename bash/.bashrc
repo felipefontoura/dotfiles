@@ -22,3 +22,8 @@ fi
 if [ -f ~/.bash_functions ]; then
   source ~/.bash_functions
 fi
+
+# Load alias completions
+if [ -f ~/.completions ]; then
+  source ~/.completions
+fi

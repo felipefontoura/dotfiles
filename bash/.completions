@@ -1,0 +1,107 @@
+# Bash completions for aliases
+# Part of ~/.dotfiles/bash — sourced from .bashrc
+
+# ─── Git ────────────────────────────────────────────────────────────────────
+if declare -F __git_complete &>/dev/null; then
+  __git_complete g      __git_main
+  __git_complete gcl    _git_clone
+  __git_complete gck    _git_checkout
+  __git_complete gcb    _git_checkout
+  __git_complete gst    _git_status
+  __git_complete gdf    _git_diff
+  __git_complete gdfs   _git_diff
+  __git_complete gad    _git_add
+  __git_complete gada   _git_add
+  __git_complete grm    _git_rm
+  __git_complete gcm    _git_commit
+  __git_complete gcmm   _git_commit
+  __git_complete gcma   _git_commit
+  __git_complete gcman  _git_commit
+  __git_complete gpl    _git_pull
+  __git_complete gplr   _git_pull
+  __git_complete gps    _git_push
+  __git_complete gpsf   _git_push
+  __git_complete grb    _git_rebase
+  __git_complete grbi   _git_rebase
+  __git_complete grbm   _git_rebase
+  __git_complete grs    _git_reset
+  __git_complete grsh   _git_reset
+  __git_complete gsh    _git_stash
+  __git_complete gshl   _git_stash
+  __git_complete gshp   _git_stash
+  __git_complete gsha   _git_stash
+  __git_complete gshd   _git_stash
+  __git_complete gb     _git_branch
+  __git_complete gbl    _git_branch
+  __git_complete gbd    _git_branch
+  __git_complete gbD    _git_branch
+  __git_complete glg    _git_log
+  __git_complete gm     _git_merge
+  __git_complete gcp    _git_cherry_pick
+  __git_complete gft    _git_fetch
+  __git_complete gfta   _git_fetch
+  __git_complete grmt   _git_remote
+  __git_complete gcf    _git_config
+  __git_complete gwt    _git_worktree
+  __git_complete gwtl   _git_worktree
+  __git_complete gwta   _git_worktree
+  __git_complete gwtab  _git_worktree
+  __git_complete gwtrm  _git_worktree
+  __git_complete gwtp   _git_worktree
+  __git_complete gwtm   _git_worktree
+  __git_complete gwtlk  _git_worktree
+  __git_complete gwtulk _git_worktree
+fi
+
+# ─── pnpm ───────────────────────────────────────────────────────────────────
+_pnpm_func=$(complete -p pnpm 2>/dev/null | grep -oP '(?<=-F )\S+')
+if [[ -n "$_pnpm_func" ]]; then
+  for _a in p pi pa pad prm px pd pb pl pf pv pct pt ptw ptu pti pte ptc pta pdbg pdbm pdbs pdu pdd pdl; do
+    complete -F "$_pnpm_func" "$_a"
+  done
+fi
+unset _pnpm_func _a
+
+# ─── bundle ─────────────────────────────────────────────────────────────────
+_bundle_func=$(complete -p bundle 2>/dev/null | grep -oP '(?<=-F )\S+')
+if [[ -n "$_bundle_func" ]]; then
+  complete -F "$_bundle_func" ba bi be
+fi
+unset _bundle_func
+
+# ─── nvim ───────────────────────────────────────────────────────────────────
+_nvim_func=$(complete -p nvim 2>/dev/null | grep -oP '(?<=-F )\S+')
+if [[ -n "$_nvim_func" ]]; then
+  complete -F "$_nvim_func" n
+else
+  complete -o default n
+fi
+unset _nvim_func
+
+# ─── claude ─────────────────────────────────────────────────────────────────
+_claude_func=$(complete -p claude 2>/dev/null | grep -oP '(?<=-F )\S+')
+if [[ -n "$_claude_func" ]]; then
+  complete -F "$_claude_func" c cy cc cr cpt cup
+fi
+unset _claude_func
+
+# ─── opencode ───────────────────────────────────────────────────────────────
+_opencode_func=$(complete -p opencode 2>/dev/null | grep -oP '(?<=-F )\S+')
+if [[ -n "$_opencode_func" ]]; then
+  complete -F "$_opencode_func" oc occ ocs ocr ocw ocp ocst ocup
+fi
+unset _opencode_func
+
+# ─── kamal ──────────────────────────────────────────────────────────────────
+_kamal_func=$(complete -p kamal 2>/dev/null | grep -oP '(?<=-F )\S+')
+if [[ -n "$_kamal_func" ]]; then
+  complete -F "$_kamal_func" kd kl klf klt kex kexh kc ks
+fi
+unset _kamal_func
+
+# ─── Rails (file path args) ──────────────────────────────────────────────────
+# Tests and linters accept specific file paths
+complete -o default rt rtm rtc rtj rth rts rta rl rlf rla rbk bia
+
+# ─── xdg-open ───────────────────────────────────────────────────────────────
+complete -o default o
