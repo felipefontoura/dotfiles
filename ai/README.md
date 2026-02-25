@@ -39,6 +39,7 @@ Both tools read from the same `.md` files via symlinks. Edit once, works everywh
 | `/branch` | Branch with naming convention |
 | `/changelog` | Changelog from commits |
 | `/merge` | Merge PR and clean up branch |
+| `/design-system` | Extract design system from screenshot, URL, Figma, or codebase |
 
 ## Skills
 
