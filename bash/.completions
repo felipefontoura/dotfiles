@@ -105,3 +105,12 @@ complete -o default rt rtm rtc rtj rth rts rta rl rlf rla rbk bia
 
 # ─── xdg-open ───────────────────────────────────────────────────────────────
 complete -o default o
+
+# ─── a (find alias) ─────────────────────────────────────────────────────────
+function _a_completions {
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  local categories
+  categories=$(grep "^# " ~/.aliases | grep -v "^# Set" | sed 's/^# //' | awk '{print tolower($1)}' | sort -u)
+  COMPREPLY=($(compgen -W "$categories" -- "$cur"))
+}
+complete -F _a_completions a

@@ -1,201 +1,198 @@
 # Set my aliases
 
 # Elgato keylights
-alias lon="elgato-key-light on"
-alias loff="elgato-key-light off"
+alias lon="elgato-key-light on"   # Liga o key light
+alias loff="elgato-key-light off" # Desliga o key light
 
 # Git
-alias g="git"
-alias gcl="git clone"
-alias gck="git checkout"
-alias gcb="git checkout -b" # Create and checkout a new branch
-alias gst="git status"
-alias gdf="git diff"
-alias gdfs="git diff --staged" # Show diff of staged changes
-alias gad="git add"
-alias gada="git add --all" # Add all changes
-alias grm="git rm"         # Remove files
-alias gcm="git commit"
-alias gcmm="git commit -m"                 # Commit with message
-alias gcma="git commit --amend"            # Amend previous commit
-alias gcman="git commit --amend --no-edit" # Amend without changing message
-alias gpl="git pull"
-alias gplr="git pull --rebase" # Pull with rebase
-alias gps="git push"
-alias gpsf="git push --force-with-lease" # Safer force push
-alias grb="git rebase"
-alias grbi="git rebase -i"                                                                                                                  # Interactive rebase
-alias grbm="git rebase origin/main"                                                                                                         # Rebase on main
-alias grs="git reset"                                                                                                                       # Reset
-alias grsh="git reset --hard"                                                                                                               # Hard reset
-alias gsh="git stash"                                                                                                                       # Stash changes
-alias gshl="git stash list"                                                                                                                 # List stashes
-alias gshp="git stash pop"                                                                                                                  # Pop stash
-alias gsha="git stash apply"                                                                                                                # Apply stash
-alias gshd="git stash drop"                                                                                                                 # Drop stash
-alias gb="git branch -l"                                                                                                                    # List branches
-alias gbl="git branch -l"                                                                                                                   # List branches
-alias gbd="git branch -d"                                                                                                                   # Delete branch
-alias gbD="git branch -D"                                                                                                                   # Force delete branch
-alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # Pretty log
-alias gm="git merge"                                                                                                                        # Merge
-alias gcp="git cherry-pick"                                                                                                                 # Cherry-pick
-alias gft="git fetch"                                                                                                                       # Fetch
-alias gfta="git fetch --all"                                                                                                                # Fetch all remotes
-alias grmt="git remote -v"                                                                                                                  # Show remotes
-alias gcf="git config --list"                                                                                                               # List config
-alias gwt="git worktree"                                                                                                                   # Worktree base
-alias gwtl="git worktree list"                                                                                                             # List worktrees
-alias gwta="git worktree add"                                                                                                              # Add worktree (existing branch)
-alias gwtab="git worktree add -b"                                                                                                          # Add worktree with new branch
-alias gwtrm="git worktree remove"                                                                                                          # Remove worktree
-alias gwtp="git worktree prune"                                                                                                            # Prune stale worktrees
-alias gwtm="git worktree move"                                                                                                             # Move worktree
-alias gwtlk="git worktree lock"                                                                                                            # Lock worktree
-alias gwtulk="git worktree unlock"                                                                                                         # Unlock worktree
+alias g="git"                                                                                                                                     # Atalho para git
+alias gcl="git clone"                                                                                                                             # Clonar repositório
+alias gck="git checkout"                                                                                                                          # Trocar branch ou restaurar arquivo
+alias gcb="git checkout -b"                                                                                                                       # Criar e trocar para nova branch
+alias gst="git status"                                                                                                                            # Ver status do repositório
+alias gdf="git diff"                                                                                                                              # Ver diferenças não staged
+alias gdfs="git diff --staged"                                                                                                                    # Ver diferenças staged
+alias gad="git add"                                                                                                                               # Adicionar arquivos ao stage
+alias gada="git add --all"                                                                                                                        # Adicionar todos os arquivos
+alias grm="git rm"                                                                                                                                # Remover arquivos do índice
+alias gcm="git commit"                                                                                                                            # Criar commit
+alias gcmm="git commit -m"                                                                                                                        # Commit com mensagem
+alias gcma="git commit --amend"                                                                                                                   # Alterar último commit
+alias gcman="git commit --amend --no-edit"                                                                                                        # Alterar último commit sem mudar a mensagem
+alias gpl="git pull"                                                                                                                              # Baixar do remoto
+alias gplr="git pull --rebase"                                                                                                                    # Baixar do remoto com rebase
+alias gps="git push"                                                                                                                              # Enviar ao remoto
+alias gpsf="git push --force-with-lease"                                                                                                          # Force push seguro
+alias grb="git rebase"                                                                                                                            # Fazer rebase
+alias grbi="git rebase -i"                                                                                                                        # Rebase interativo
+alias grbm="git rebase origin/main"                                                                                                               # Rebase em cima da main
+alias grs="git reset"                                                                                                                             # Desfazer commits ou stage
+alias grsh="git reset --hard"                                                                                                                     # Descartar todas as mudanças locais
+alias gsh="git stash"                                                                                                                             # Guardar mudanças temporariamente
+alias gshl="git stash list"                                                                                                                       # Listar stashes
+alias gshp="git stash pop"                                                                                                                        # Restaurar e remover último stash
+alias gsha="git stash apply"                                                                                                                      # Restaurar último stash sem remover
+alias gshd="git stash drop"                                                                                                                       # Remover último stash
+alias gb="git branch -l"                                                                                                                          # Listar branches
+alias gbl="git branch -l"                                                                                                                         # Listar branches
+alias gbd="git branch -d"                                                                                                                         # Deletar branch (seguro)
+alias gbD="git branch -D"                                                                                                                         # Forçar deleção de branch
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"      # Log visual com grafo
+alias gm="git merge"                                                                                                                              # Mesclar branch
+alias gcp="git cherry-pick"                                                                                                                       # Copiar commit para branch atual
+alias gft="git fetch"                                                                                                                             # Buscar atualizações do remoto
+alias gfta="git fetch --all"                                                                                                                      # Buscar atualizações de todos os remotos
+alias grmt="git remote -v"                                                                                                                        # Listar remotos
+alias gcf="git config --list"                                                                                                                     # Listar configurações do git
+alias gwt="git worktree"                                                                                                                          # Gerenciar worktrees
+alias gwtl="git worktree list"                                                                                                                    # Listar worktrees
+alias gwta="git worktree add"                                                                                                                     # Adicionar worktree (branch existente)
+alias gwtab="git worktree add -b"                                                                                                                 # Adicionar worktree com nova branch
+alias gwtrm="git worktree remove"                                                                                                                 # Remover worktree
+alias gwtp="git worktree prune"                                                                                                                   # Limpar worktrees obsoletos
+alias gwtm="git worktree move"                                                                                                                    # Mover worktree
+alias gwtlk="git worktree lock"                                                                                                                   # Bloquear worktree
+alias gwtulk="git worktree unlock"                                                                                                                # Desbloquear worktree
 
 # Rails
-alias rce="bin/rails credentials:edit"
-alias rced="bin/rails credentials:edit -e development"
-alias rcep="bin/rails credentials:edit -e production"
-alias rcs="bin/rails credentials:show"
-alias rcsd="bin/rails credentials:show -e development"
-alias rcsp="bin/rails credentials:show -e production"
+alias rce="bin/rails credentials:edit"                  # Editar credentials master
+alias rced="bin/rails credentials:edit -e development"  # Editar credentials de development
+alias rcep="bin/rails credentials:edit -e production"   # Editar credentials de production
+alias rcs="bin/rails credentials:show"                  # Ver credentials master
+alias rcsd="bin/rails credentials:show -e development"  # Ver credentials de development
+alias rcsp="bin/rails credentials:show -e production"   # Ver credentials de production
 
-alias rgmi="bin/rails generate migration"
-alias rdmi="bin/rails destroy migration"
-alias rgmd="bin/rails generate model"
-alias rdmd="bin/rails destroy model"
-alias rgct="bin/rails generate controller"
-alias rdct="bin/rails destroy controller"
-alias rgsc="bin/rails generate scaffold_controller"
-alias rdsc="bin/rails destroy scaffold_controller"
-alias rgjb="bin/rails generate job"
-alias rdjb="bin/rails destroy job"
-alias rghp="bin/rails generate helper"
-alias rdhp="bin/rails destroy helper"
-alias rgjb="bin/rails generate job"
-alias rdjb="bin/rails destroy job"
-alias rgat="bin/rails generate authentication"
-alias rdat="bin/rails destroy authentication"
+alias rgmi="bin/rails generate migration"               # Gerar migration
+alias rdmi="bin/rails destroy migration"                # Destruir migration
+alias rgmd="bin/rails generate model"                   # Gerar model
+alias rdmd="bin/rails destroy model"                    # Destruir model
+alias rgct="bin/rails generate controller"              # Gerar controller
+alias rdct="bin/rails destroy controller"               # Destruir controller
+alias rgsc="bin/rails generate scaffold_controller"     # Gerar scaffold_controller
+alias rdsc="bin/rails destroy scaffold_controller"      # Destruir scaffold_controller
+alias rgjb="bin/rails generate job"                     # Gerar job
+alias rdjb="bin/rails destroy job"                      # Destruir job
+alias rghp="bin/rails generate helper"                  # Gerar helper
+alias rdhp="bin/rails destroy helper"                   # Destruir helper
+alias rgat="bin/rails generate authentication"          # Gerar autenticação
+alias rdat="bin/rails destroy authentication"           # Destruir autenticação
 
-alias rc="bin/rails console"
-alias rr="bin/rails routes"
+alias rc="bin/rails console"                            # Abrir Rails console
+alias rr="bin/rails routes"                             # Listar rotas
 
-alias rt="RUBYOPT='-W:no-deprecated' bin/rails test"
-alias rtm="RUBYOPT='-W:no-deprecated' bin/rails test:models"
-alias rtc="RUBYOPT='-W:no-deprecated' bin/rails test:controllers"
-alias rtj="RUBYOPT='-W:no-deprecated' bin/rails test:jobs"
-alias rth="RUBYOPT='-W:no-deprecated' bin/rails test:helpers"
-alias rts="RUBYOPT='-W:no-deprecated' bin/rails test:system"
-alias rta="RUBYOPT='-W:no-deprecated' bin/rails test:all"
+alias rt="RUBYOPT='-W:no-deprecated' bin/rails test"              # Rodar todos os testes
+alias rtm="RUBYOPT='-W:no-deprecated' bin/rails test:models"      # Rodar testes de models
+alias rtc="RUBYOPT='-W:no-deprecated' bin/rails test:controllers"  # Rodar testes de controllers
+alias rtj="RUBYOPT='-W:no-deprecated' bin/rails test:jobs"        # Rodar testes de jobs
+alias rth="RUBYOPT='-W:no-deprecated' bin/rails test:helpers"     # Rodar testes de helpers
+alias rts="RUBYOPT='-W:no-deprecated' bin/rails test:system"      # Rodar testes de sistema
+alias rta="RUBYOPT='-W:no-deprecated' bin/rails test:all"         # Rodar todos os testes
 
-alias rl="bin/rubocop"
-alias rlf="bin/rubocop -a"
-alias rla="bin/rubocop -A"
+alias rl="bin/rubocop"                                  # Lint com Rubocop
+alias rlf="bin/rubocop -a"                              # Auto-corrigir com Rubocop (seguro)
+alias rla="bin/rubocop -A"                              # Auto-corrigir com Rubocop (agressivo)
 
-alias rbk="bin/brakeman --no-pager"
+alias rbk="bin/brakeman --no-pager"                     # Analisar segurança da aplicação
 
-alias bia="bin/importmap audit"
+alias bia="bin/importmap audit"                         # Auditar vulnerabilidades do importmap
 
-alias rdbst="bin/rails db:setup"
-alias rdbcr="bin/rails db:create"
-alias rdbmi="bin/rails db:migrate"
-alias rdbrb="bin/rails db:rollback"
-alias rdbsd="bin/rails db:seed"
-alias rdbsdr="bin/rails db:seed:replant"
+alias rdbst="bin/rails db:setup"                        # Setup completo do banco (create + migrate + seed)
+alias rdbcr="bin/rails db:create"                       # Criar banco de dados
+alias rdbmi="bin/rails db:migrate"                      # Rodar migrations pendentes
+alias rdbrb="bin/rails db:rollback"                     # Reverter última migration
+alias rdbsd="bin/rails db:seed"                         # Popular banco com seeds
+alias rdbsdr="bin/rails db:seed:replant"                # Limpar e popular banco com seeds
 
-alias fsd="bundle exec foreman start -f Procfile.dev"
-alias fsp="bundle exec foreman start -f Procfile"
+alias fsd="bundle exec foreman start -f Procfile.dev"   # Iniciar servidor de desenvolvimento
+alias fsp="bundle exec foreman start -f Procfile"       # Iniciar servidor de produção
 
 # Bundle
-alias ba="bundle add"
-alias bi="bundle install"
-alias be="bundle exec"
+alias ba="bundle add"                                   # Adicionar gem ao Gemfile
+alias bi="bundle install"                               # Instalar gems do Gemfile
+alias be="bundle exec"                                  # Executar comando no contexto do bundle
 
 # Kamal
-alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa" -v /var/run/docker.sock:/var/run/docker.sock -e KAMAL_REGISTRY_PASSWORD=$(env | grep "^KAMAL_" | cut -d '=' -f2) ghcr.io/basecamp/kamal:latest'
-alias kd="bin/kamal deploy"
-alias kl="bin/kamal logs"
-alias klf="bin/kamal logs --follow"
-alias klt="bin/kamal logs --tail"
-alias kex="bin/kamal exec"
-alias kexh="bin/kamal exec --help"
-alias kc="bin/kamal console"
-alias ks="bin/kamal shell"
+alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa" -v /var/run/docker.sock:/var/run/docker.sock -e KAMAL_REGISTRY_PASSWORD=$(env | grep "^KAMAL_" | cut -d '=' -f2) ghcr.io/basecamp/kamal:latest' # Executar Kamal via Docker
+alias kd="bin/kamal deploy"                             # Fazer deploy
+alias kl="bin/kamal logs"                               # Ver logs
+alias klf="bin/kamal logs --follow"                     # Ver logs em tempo real
+alias klt="bin/kamal logs --tail"                       # Ver últimas linhas dos logs
+alias kex="bin/kamal exec"                              # Executar comando remoto
+alias kexh="bin/kamal exec --help"                      # Ajuda do exec
+alias kc="bin/kamal console"                            # Abrir console remoto
+alias ks="bin/kamal shell"                              # Abrir shell remoto
 
 # pnpm
-alias p="pnpm"
-alias pi="pnpm install"
-alias pa="pnpm add"
-alias pad="pnpm add -D"
-alias prm="pnpm remove"
-alias px="pnpm dlx"
+alias p="pnpm"                                          # Atalho para pnpm
+alias pi="pnpm install"                                 # Instalar dependências
+alias pa="pnpm add"                                     # Adicionar pacote
+alias pad="pnpm add -D"                                 # Adicionar pacote como devDependency
+alias prm="pnpm remove"                                 # Remover pacote
+alias px="pnpm dlx"                                     # Executar pacote sem instalar
 
 # Dev
-alias pd="pnpm dev"
-alias pb="pnpm build"
-alias pl="pnpm lint"
-alias pf="pnpm format"
-alias pv="pnpm verify"
-alias pct="pnpm check-types"
+alias pd="pnpm dev"                                     # Iniciar servidor de desenvolvimento
+alias pb="pnpm build"                                   # Build do projeto
+alias pl="pnpm lint"                                    # Lint
+alias pf="pnpm format"                                  # Formatar código
+alias pv="pnpm verify"                                  # Verificar código (lint + types)
+alias pct="pnpm check-types"                            # Verificar tipos TypeScript
 
-# Tests (como rt, rtm, rtc...)
-alias pt="pnpm test"
-alias ptw="pnpm test:watch"
-alias ptu="pnpm test:unit"
-alias pti="pnpm test:integration"
-alias pte="pnpm test:e2e"
-alias ptc="pnpm test:coverage"
-alias pta="pnpm test:all"
+# Tests
+alias pt="pnpm test"                                    # Rodar testes
+alias ptw="pnpm test:watch"                             # Rodar testes em modo watch
+alias ptu="pnpm test:unit"                              # Rodar testes unitários
+alias pti="pnpm test:integration"                       # Rodar testes de integração
+alias pte="pnpm test:e2e"                               # Rodar testes end-to-end
+alias ptc="pnpm test:coverage"                          # Rodar testes com coverage
+alias pta="pnpm test:all"                               # Rodar todos os testes
 
-# Database - Drizzle (como rdbmi, rdbrb...)
-alias pdbg="pnpm db:generate"
-alias pdbm="pnpm db:migrate"
-alias pdbs="pnpm db:status"
+# Database - Drizzle
+alias pdbg="pnpm db:generate"                           # Gerar migration (Drizzle)
+alias pdbm="pnpm db:migrate"                            # Rodar migrations (Drizzle)
+alias pdbs="pnpm db:status"                             # Ver status das migrations (Drizzle)
 
-# Docker (como fsd, fsp)
-alias pdu="pnpm docker:up"
-alias pdd="pnpm docker:down"
-alias pdl="pnpm docker:logs"
+# Docker
+alias pdu="pnpm docker:up"                              # Subir containers Docker
+alias pdd="pnpm docker:down"                            # Parar containers Docker
+alias pdl="pnpm docker:logs"                            # Ver logs dos containers Docker
 
 # Claude Code
-alias c="claude"                                    # Interactive session
-alias cy="claude --dangerously-skip-permissions"    # Yolo mode (no permission prompts)
-alias cc="claude -c"                                # Continue last conversation
-alias cr="claude -r"                                # Resume conversation
-alias cpt="claude -p"                               # Print mode (non-interactive)
-alias cup="claude update"                           # Update
+alias c="claude"                                        # Sessão interativa
+alias cy="claude --dangerously-skip-permissions"        # Modo yolo (sem prompts de permissão)
+alias cc="claude -c"                                    # Continuar última conversa
+alias cr="claude -r"                                    # Retomar conversa por ID
+alias cpt="claude -p"                                   # Modo print (não interativo)
+alias cup="claude update"                               # Atualizar Claude Code
 
 # OpenCode
-alias oc="opencode"                                 # Interactive TUI
-alias occ="opencode -c"                             # Continue last session
-alias ocs="opencode -s"                             # Resume session by ID
-alias ocr="opencode run"                            # Run with message (non-interactive)
-alias ocw="opencode web"                            # Web interface
-alias ocp="opencode pr"                             # Fetch PR and run
-alias ocst="opencode stats"                         # Token usage & costs
-alias ocup="opencode upgrade"                       # Upgrade
+alias oc="opencode"                                     # TUI interativo
+alias occ="opencode -c"                                 # Continuar última sessão
+alias ocs="opencode -s"                                 # Retomar sessão por ID
+alias ocr="opencode run"                                # Executar com mensagem (não interativo)
+alias ocw="opencode web"                                # Interface web
+alias ocp="opencode pr"                                 # Buscar PR e executar
+alias ocst="opencode stats"                             # Uso de tokens e custos
+alias ocup="opencode upgrade"                           # Atualizar OpenCode
 
 # Neovim
-alias n="nvim"
-alias n.="nvim ."
+alias n="nvim"                                          # Abrir Neovim
+alias n.="nvim ."                                       # Abrir Neovim no diretório atual
 
 # Lazygit
-alias lzg="lazygit"
+alias lzg="lazygit"                                     # Interface visual para git
 
 # Lazydocker
-alias lzd="lazydocker"
+alias lzd="lazydocker"                                  # Interface visual para Docker
 
 # Shell
-alias scp="scp -O"
+alias scp="scp -O"                                      # Copiar arquivos via SSH (modo legado)
 
 # Navigation
-alias h="cd ~"
-alias ..="cd .."
-alias ...="cd ../.."
+alias h="cd ~"                                          # Ir para o diretório home
+alias ..="cd .."                                        # Subir um nível
+alias ...="cd ../.."                                    # Subir dois níveis
 
 # Others
-alias o="xdg-open"
-alias m="rmpc"
-
+alias o="xdg-open"                                      # Abrir arquivo ou URL com o app padrão
+alias m="rmpc"                                          # Controlar reprodução de música
