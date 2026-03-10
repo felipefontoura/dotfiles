@@ -5,3 +5,4 @@ lazy-lock.json
 .zshenv
 .zshenv.*
 !.zshenv.example
+hyprland/.config/hypr/shaders/
