@@ -38,8 +38,6 @@ Create a pull request on GitHub for the current branch.
 ## Test plan
 - [ ] Unit tests pass
 - [ ] {specific checks based on what changed}
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 ## Create with gh

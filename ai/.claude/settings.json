@@ -1,9 +1,11 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "WebSearch",
       "WebFetch",
-
       "Bash(bash:*)",
       "Bash(sh:*)",
       "Bash(source:*)",
@@ -101,7 +103,6 @@
       "Bash(identify:*)",
       "Bash(qrencode:*)",
       "Bash(cd:*)",
-
       "mcp__github__search_repositories",
       "mcp__github__list_pull_requests",
       "mcp__github__get_pull_request",
@@ -123,7 +124,6 @@
       "mcp__github__fork_repository",
       "mcp__github__search_code",
       "mcp__github__search_users",
-
       "mcp__figma__get_design_context",
       "mcp__figma__get_screenshot",
       "mcp__figma__get_metadata",
@@ -136,7 +136,6 @@
       "mcp__figma__send_code_connect_mappings",
       "mcp__figma__generate_figma_design",
       "mcp__figma__whoami",
-
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_snapshot",
       "mcp__playwright__browser_screenshot",
@@ -160,7 +159,6 @@
       "mcp__playwright__browser_navigate_back",
       "mcp__playwright__browser_install",
       "mcp__playwright__browser_close",
-
       "mcp__shadcn__get_audit_checklist",
       "mcp__shadcn__get_project_registries",
       "mcp__shadcn__view_items_in_registries",
@@ -172,6 +170,18 @@
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
+  "enabledPlugins": {
+    "interface-design@interface-design": true
+  },
   "skipDangerousModePermissionPrompt": true,
-  "model": "opusplan"
+  "teammateMode": "in-process",
+  "effortLevel": "high",
+  "extraKnownMarketplaces": {
+    "knowledge-work-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/knowledge-work-plugins"
+      }
+    }
+  }
 }
