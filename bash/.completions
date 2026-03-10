@@ -81,13 +81,19 @@ fi
 unset _bundle_func
 
 # ─── nvim ───────────────────────────────────────────────────────────────────
-_nvim_func=$(complete -p nvim 2>/dev/null | grep -oP '(?<=-F )\S+')
+_nvim_complete=$(complete -p nvim 2>/dev/null)
+_nvim_func=$(grep -oP '(?<=-F )\S+' <<< "$_nvim_complete")
+_nvim_opts=$(grep -oP '(?<= )-o \S+' <<< "$_nvim_complete" | tr '\n' ' ' | sed 's/ $//')
 if [[ -n "$_nvim_func" ]]; then
-  complete -F "$_nvim_func" n
+  if [[ -n "$_nvim_opts" ]]; then
+    eval "complete $_nvim_opts -F $_nvim_func n"
+  else
+    complete -F "$_nvim_func" n
+  fi
 else
   complete -o default n
 fi
-unset _nvim_func
+unset _nvim_complete _nvim_func _nvim_opts
 
 # ─── claude ─────────────────────────────────────────────────────────────────
 _claude_func=$(complete -p claude 2>/dev/null | grep -oP '(?<=-F )\S+')

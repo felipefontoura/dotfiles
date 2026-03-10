@@ -57,3 +57,63 @@ function a {
     return 1
   fi
 }
+
+# tdl - Tmux Dev Layout
+# Layout:
+#   ┌────────┬────────┬───────────────┬──────────┐
+#   │  AI    │  AI    │    NeoVim    │ Server   │
+#   │        │        │               │ Log      │
+#   │        │        │               ├──────────┤
+#   │        │        │               │ Mini Cmd │
+#   ├────────┴────────┴───────────────┴──────────┤
+#   │ Terminal                                    │
+#   └─────────────────────────────────────────────┘
+# Usage: tdl <ai1> [ai2]
+tdl() {
+  [[ -z $1 ]] && { echo "Usage: tdl <ai1> [ai2]"; return 1; }
+  [[ -z $TMUX ]] && { echo "You must start tmux to use tdl."; return 1; }
+
+  local current_dir="${PWD}"
+  local ai1="$1"
+  local ai2="${2:-$1}"
+
+  local editor_pane="$TMUX_PANE"
+
+  tmux rename-window -t "$editor_pane" "$(basename "$current_dir")"
+
+  # Terminal: barra inferior (12%)
+  local terminal_pane
+  terminal_pane=$(tmux split-window -v -p 12 -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+  # AI: à esquerda do NeoVim (38% para os dois AIs)
+  local ai1_pane
+  ai1_pane=$(tmux split-window -h -b -p 38 -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+  # AI: à direita do primeiro AI (50% do bloco AI = ~19% cada)
+  local ai2_pane
+  ai2_pane=$(tmux split-window -h -p 50 -t "$ai1_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+  # Server Log: à direita do editor (12%)
+  local log_pane
+  log_pane=$(tmux split-window -h -p 12 -t "$editor_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+  # Mini Command: embaixo do Server Log (18%)
+  local mini_pane
+  mini_pane=$(tmux split-window -v -p 18 -t "$log_pane" -c "$current_dir" -P -F '#{pane_id}')
+
+  # Nomeia as panes
+  tmux select-pane -t "$editor_pane" -T "editor"
+  tmux select-pane -t "$terminal_pane" -T "terminal"
+  tmux select-pane -t "$ai1_pane" -T "ai1"
+  tmux select-pane -t "$ai2_pane" -T "ai2"
+  tmux select-pane -t "$log_pane" -T "log"
+  tmux select-pane -t "$mini_pane" -T "cmd"
+
+  # Executa comandos
+  tmux send-keys -t "$ai1_pane" "$ai1" C-m
+  tmux send-keys -t "$ai2_pane" "$ai2" C-m
+  tmux send-keys -t "$editor_pane" "$EDITOR ." C-m
+
+  # Foco no editor
+  tmux select-pane -t "$editor_pane"
+}
